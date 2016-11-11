@@ -1,1 +1,77 @@
-Work them players.
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+
+public class Player {
+
+	public void howManyWithName() throws IOException {
+
+		String player1, player2, player3, player4, player5, player6, player7, player8;
+
+		int playerNumber = ConsoleUI.promptForInt("How many players are going to play this game? 2-8", 2, 8);
+
+		if (playerNumber == 2) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 3) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 4) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			player4 = ConsoleUI.promptForInput("Assign name for player 4", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 5) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			player4 = ConsoleUI.promptForInput("Assign name for player 4", false);
+			player5 = ConsoleUI.promptForInput("Assign name for player 5", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 6) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			player4 = ConsoleUI.promptForInput("Assign name for player 4", false);
+			player5 = ConsoleUI.promptForInput("Assign name for player 5", false);
+			player6 = ConsoleUI.promptForInput("Assign name for player 6", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 7) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			player4 = ConsoleUI.promptForInput("Assign name for player 4", false);
+			player5 = ConsoleUI.promptForInput("Assign name for player 5", false);
+			player6 = ConsoleUI.promptForInput("Assign name for player 6", false);
+			player7 = ConsoleUI.promptForInput("Assign name for player 7", false);
+			shuffleArray(playerNumber);
+		} else if (playerNumber == 8) {
+			player1 = ConsoleUI.promptForInput("Assign name for player 1", false);
+			player2 = ConsoleUI.promptForInput("Assign name for player 2", false);
+			player3 = ConsoleUI.promptForInput("Assign name for player 3", false);
+			player4 = ConsoleUI.promptForInput("Assign name for player 4", false);
+			player5 = ConsoleUI.promptForInput("Assign name for player 5", false);
+			player6 = ConsoleUI.promptForInput("Assign name for player 6", false);
+			player7 = ConsoleUI.promptForInput("Assign name for player 7", false);
+			player8 = ConsoleUI.promptForInput("Assign name for player 8", false);
+			shuffleArray(playerNumber);
+		}
+	}
+
+	public void shuffleArray(int playerNumber) {
+		Integer[] randomizedPlayerSelection = new Integer[playerNumber];
+		for (int i = 0; i < randomizedPlayerSelection.length; i++) {
+			randomizedPlayerSelection[i] = i + 1;
+		}
+		Collections.shuffle(Arrays.asList(randomizedPlayerSelection));
+		System.out.println("The players will select their pieces in the following order "
+				+ Arrays.toString(randomizedPlayerSelection));
+	}
+
+}
+
