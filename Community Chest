@@ -1,0 +1,76 @@
+
+Community Chest Code.... Not fully working
+
+
+ArrayList<ChestCard> cards;
+ArrayList<ChestCard> discards;
+
+		public ChestDeck() {
+			cards = new ArrayList<ChestCard>();
+			discards = new ArrayList<ChestCard>();
+
+			discards.add(new ChestCard(0,"second prize"));
+			discards.add(new ChestCard(0,"bank error"));
+			discards.add(new ChestCard(0,"life insurance"));
+			discards.add(new ChestCard(0,"income tax refund"));
+			discards.add(new ChestCard(0,"grand opera opening"));
+			discards.add(new ChestCard(0,"recieve for services"));
+			discards.add(new ChestCard(0,"you inherit"));
+			discards.add(new ChestCard(0,"get out of jail free"));
+			discards.add(new ChestCard(0,"street repairs"));
+			discards.add(new ChestCard(0,"doctor's fee"));
+			discards.add(new ChestCard(0,"pay school tax"));
+			discards.add(new ChestCard(0,"pay hospital"));
+			discards.add(new ChestCard(0,"xmas fund"));
+			discards.add(new ChestCard(0,"from sale of stock"));
+			discards.add(new ChestCard(1,"advance to go"));
+			discards.add(new ChestCard(2,"go to jail"));
+
+			shuffle();
+		}
+
+		public void shuffle() {
+			//			System.out.println("shuffling chest");
+
+			Random random = new Random();
+			while(discards.size()>0) {
+				int index = Math.abs(random.nextInt())%discards.size();
+				cards.add(discards.get(index));
+				discards.remove(index);
+			}
+		}
+
+		public int getChest(int location) {
+			int rval = location;
+
+			if(cards.size()==0) {
+				shuffle();
+			}
+			ChestCard card = (ChestCard)cards.get(0);
+			cards.remove(0);
+			discards.add(card);
+			if(card.type==1) {
+				loops++;
+				location = 0;
+			}
+			else if(card.type==2) {
+				location = 10;
+			}
+
+			System.out.println("GOT CommunityChest: "+card.label);
+
+			return(rval);
+		}
+	
+	
+	class ChestCard {
+	public int type;
+	public String label;
+
+	public ChestCard(int cardtype, String cardname) {
+			type = cardtype;
+			label = cardname;
+		}
+	}
+
+
