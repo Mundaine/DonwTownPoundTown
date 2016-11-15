@@ -1,0 +1,368 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ConsoleUI {
+
+	public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+	/**
+	 * Generates a console-based menu using the Strings in options as the menu
+	 * items. Reserves the number 0 for the "quit" option when withQuit is true.
+	 * 
+	 * @param options
+	 *            - Strings representing the menu options
+	 * @param withQuit
+	 *            - adds option 0 for "quit" when true
+	 * @return the int of the selection made by the user
+	 */
+
+	public static int promptForMenuSelection(String[] options, boolean withQuit) throws IOException {
+		String input = null;
+		int userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Integer.parseInt(input);
+			} catch (NumberFormatException myException) {
+				System.out.println("That was not valid");
+				System.out.println(myException.getMessage());
+				System.out.println("try again");
+			}
+			if (userInput == 0) {
+				withQuit = true;
+			}
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/*
+	 * int arrayLen = options.length; String input; int userInput =0; input =
+	 * in.readLine(); userInput = Integer.parseInt(input); if (userInput == 0) {
+	 * withQuit = true; } return userInput;
+	 */
+
+	/**
+	 * Generates a prompt that expects the user to enter one of two responses
+	 * that will equate to a boolean value. The trueString represents the case
+	 * insensitive response that will equate to true. The falseString acts
+	 * similarly, but for a false boolean value. Example: Assume this method is
+	 * called with a trueString argument of "yes" and a falseString argument of
+	 * "no". If the user enters "YES", the method returns true. If the user
+	 * enters "no", the method returns false. All other inputs are considered
+	 * invalid, the user will be informed, and the prompt will repeat.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param trueString
+	 *            - the case insensitive value that will evaluate to true
+	 * @param falseString
+	 *            - the case insensitive value that will evaluate to false
+	 * @return the boolean value
+	 */
+	public static boolean promptForBool(String prompt, String trueString, String falseString) throws IOException {
+		boolean isValidAns = false;
+		boolean userAnsCheck = false;
+		trueString = trueString.toLowerCase();
+		falseString = falseString.toLowerCase();
+		while (!isValidAns) {
+			try {
+				System.out.println(prompt);
+				String Response = in.readLine();
+				Response = Response.toLowerCase();
+				if (Response.equals(trueString) || Response.equals(falseString)) {
+					isValidAns = true;
+					if (Response.equals(trueString)) {
+						userAnsCheck = true;
+					} else {
+						userAnsCheck = false;
+					}
+				} else {
+					System.out.println("Please input either " + trueString + " or " + falseString);
+					isValidAns = false;
+				}
+			} catch (Exception e) {
+				System.out.println("Please input either " + trueString + " or " + falseString);
+			}
+		}
+		return userAnsCheck;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing a byte
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the byte value
+	 */
+	public static byte promptForByte(String prompt, byte min, byte max) throws IOException {
+		System.out.println(prompt);
+		String input = null;
+		byte userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Byte.parseByte(input);
+			} catch (NumberFormatException myException) {
+				System.out.println(myException.getMessage());
+				System.out.println("You gotta input anything higher than " + min + " or less than " + max);
+				System.out.println("Try again.");
+				while (userInput < min || userInput > max) {
+					input = in.readLine();
+					userInput = Byte.parseByte(input);
+				}
+			}
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing a short
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the short value
+	 */
+	public static short promptForShort(String prompt, short min, short max) throws IOException {
+		System.out.println(prompt);
+		String input = null;
+		short userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Short.parseShort(input);
+			} catch (NumberFormatException myException) {
+				System.out.println(myException.getMessage());
+				System.out.println("You gotta input anything higher than " + min + " or less than " + max);
+				System.out.println("Try again.");
+				while (userInput > min || userInput < max) {
+					input = in.readLine();
+					userInput = Short.parseShort(input);
+				}
+			}
+
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing an int
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the int value
+	 */
+	public static int promptForInt(String prompt, int min, int max) throws IOException {
+		if (prompt == null) {
+			throw new IllegalArgumentException("prompt cannot be null, oi!");
+		}
+		System.out.println(prompt);
+		boolean isValidInput = false;
+		String rawInput;
+		int values = 0;
+		while (!isValidInput) {
+			isValidInput = true;
+			rawInput = in.readLine();
+			try {
+				values = Integer.parseInt(rawInput);
+			} catch (NumberFormatException ex) {
+				isValidInput = false;
+				System.out.println("You must enter a number");
+			}
+			if (isValidInput && (values < min || values > max)) {
+				isValidInput = false;
+				System.out.println("Value must be between " + min + " and " + max);
+			}
+		}
+		return values;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing a long
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the long value
+	 */
+	public static long promptForLong(String prompt, long min, long max) throws IOException {
+		System.out.println(prompt);
+		String input = null;
+		long userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Long.parseLong(input);
+			} catch (NumberFormatException myException) {
+				System.out.println(myException.getMessage());
+				System.out.println("You gotta input anything higher than " + min + " or less than " + max);
+				System.out.println("Try again.");
+				while (userInput > min || userInput < max) {
+					input = in.readLine();
+					userInput = Long.parseLong(input);
+				}
+			}
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing a float
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the float value
+	 */
+	public static float promptForFloat(String prompt, float min, float max) throws IOException {
+		System.out.println(prompt);
+		String input = null;
+		float userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Float.parseFloat(input);
+			} catch (NumberFormatException myException) {
+				System.out.println(myException.getMessage());
+				System.out.println("You gotta input anything higher than " + min + " or less than " + max);
+				System.out.println("Try again.");
+				while (userInput > min || userInput < max) {
+					input = in.readLine();
+					userInput = Float.parseFloat(input);
+				}
+			}
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/**
+	 * Generates a prompt that expects a numeric input representing a double
+	 * value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the double value
+	 */
+	public static double promptForDouble(String prompt, double min, double max) throws IOException {
+		System.out.println(prompt);
+		String input = null;
+		double userInput = 0;
+		do {
+			input = in.readLine();
+			try {
+				userInput = Double.parseDouble(input);
+			} catch (NumberFormatException myException) {
+				System.out.println(myException.getMessage());
+				System.out.println("You gotta input anything higher than " + min + " or less than " + max);
+				System.out.println("Try again.");
+				while (userInput > min || userInput < max) {
+					input = in.readLine();
+					userInput = Double.parseDouble(input);
+				}
+			}
+		} while (userInput == 0);
+		return userInput;
+	}
+
+	/**
+	 * Generates a prompt that allows the user to enter any response and returns
+	 * the String. When allowEmpty is true, empty responses are valid. When
+	 * false, responses must contain at least one character (including
+	 * whitespace).
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user.
+	 * @param allowEmpty
+	 *            - when true, makes empty responses valid
+	 * @return the input from the user as a String
+	 */
+	public static String promptForInput(String prompt, boolean allowEmpty) throws IOException {
+		System.out.println(prompt);
+		String errorMessage = "Boi what you doin' with yo life? Gotta enter somethin' valid";
+		boolean validInput = false;
+		String input = null;
+		while (!validInput) {
+			try {
+				input = in.readLine();
+				char[] checkChar = input.toCharArray();
+				if (!allowEmpty && input.isEmpty()) {
+					System.out.println(errorMessage);
+					validInput = false;
+				} else {
+					validInput = true;
+				}
+				for (char a : checkChar) {
+					if (!Character.isLetter(a) && a != ' ') {
+						validInput = false;
+						System.out.println(errorMessage);
+					}
+				}
+			} catch (Exception excp) {
+				System.out.println("Congratz, you are an error");
+			}
+		}
+		return input;
+	}
+
+	/**
+	 * Generates a prompt that expects a single character input representing a
+	 * char value. This method loops until valid input is given.
+	 * 
+	 * @param prompt
+	 *            - the prompt to be displayed to the user
+	 * @param min
+	 *            - the inclusive minimum boundary
+	 * @param max
+	 *            - the inclusive maximum boundary
+	 * @return the char value
+	 */
+
+	public static char promptForChar(String prompt, char min, char max) throws IOException {
+		System.out.println(prompt);
+		boolean validInput = false;
+		char charValue = 0;
+		while (!validInput)
+			try {
+				String charInput = in.readLine();
+				charValue = charInput.charAt(0);
+				if (charValue > max || charValue < min || charInput.length() > 1) {
+					validInput = false;
+					System.out.println("Gotta input a value between " + min + " and " + max + " plz");
+				} else {
+					validInput = true;
+				}
+			} catch (Exception exc) {
+				validInput = false;
+				System.out.println("Gotta input a value between " + min + " and " + max);
+			}
+		return charValue;
+
+	}
+}
