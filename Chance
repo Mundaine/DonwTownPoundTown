@@ -1,149 +1,80 @@
+import java.util.ArrayList;
+import java.util.Random;
 
-Chance Card Code..... Not fully working
+// make it so that when a player lands on a spot with chance card pull, this gets called
+public class Chance {
+	ArrayList cards = new ArrayList<ChanceCard>();
 
+	ArrayList discards = new ArrayList<ChanceCard>();
 
+	@SuppressWarnings("unchecked")
+	public void ChanceDeck() {
 
+		discards.add(new ChanceCard(0, "Get out of Jail Free"));
+		// can be sold and or sold until needed
+		discards.add(new ChanceCard(1, "Pay Poor Tax"));
+		// 15
+		discards.add(new ChanceCard(2, "Elected Chairman of the Board"));
+		// pay each player 50
+		discards.add(new ChanceCard(3, "Bank Pays"));
+		// dividend of 50
+		discards.add(new ChanceCard(4, "Your building loan matures"));
+		// collect 150
+		discards.add(new ChanceCard(5, "Make General Repairs on all Property"));
+		// for each house 25, hotel 100
+		discards.add(new ChanceCard(6, "GO TO JAIL"));
+		discards.add(new ChanceCard(7, "Advance to Go"));
+		// collect 200
+		discards.add(new ChanceCard(8, "Advance to St. Charles Place"));
+		// collect 200 if passed GO
+		discards.add(new ChanceCard(9, "Advance to Boardwalk"));
+		// can buy if unowned
+		discards.add(new ChanceCard(10, "Advance to Nearest Utility"));
+		// if unowned, can buy. if owned, roll dice and pay player x10 amount
+		// thrown
+		discards.add(new ChanceCard(11, "Advance to Illinois Avenue"));
+		// collect 200 if passed GO
+		discards.add(new ChanceCard(12, "Advance to reading"));
+		discards.add(new ChanceCard(13, "Go back 3 spaces"));
+		// pay rent if landed on owned property
+		discards.add(new ChanceCard(14, "Advance to nearest Railroad"));
+		// pay owner twice the rent amount , else can buy
+		discards.add(new ChanceCard(15, "Take a trip to nearest Railroad"));
+		// if pass go collect 200
+		discards.add(new ChanceCard(16, "You have won a crossword competition"));
+		// collect 100
 
-package DangDirtyOomans;
+		shuffle();
+	}
 
-ArrayList<ChanceCard> cards;
-ArrayList<ChanceCard> discards;
+	public void shuffle() {
 
-public ChanceDeck() {
-			cards = new ArrayList<ChanceCard>();
-			discards = new ArrayList<ChanceCard>();
+		System.out.println("shuffling chance deck");
 
-			discards.add(new ChanceCard(0,"get out of jail free"));
-			discards.add(new ChanceCard(0,"pay poor tax"));
-			discards.add(new ChanceCard(0,"elected chairman of the board"));
-			discards.add(new ChanceCard(0,"bank pays"));
-			discards.add(new ChanceCard(0,"collect 150"));
-			discards.add(new ChanceCard(0,"make repairs"));
-			discards.add(new ChanceCard(1,"GO TO JAIL"));
-			discards.add(new ChanceCard(2,"advance to go"));
-			discards.add(new ChanceCard(3,"advance to charles"));
-			discards.add(new ChanceCard(4,"advance to boardwalk"));
-			discards.add(new ChanceCard(5,"advance to nearest utility"));
-			discards.add(new ChanceCard(6,"advance to illinois"));
-			discards.add(new ChanceCard(7,"advance to reading"));
-			discards.add(new ChanceCard(8,"go back 3 spaces"));
-			discards.add(new ChanceCard(9,"advance to nearest RR"));
-			discards.add(new ChanceCard(9,"advance to nearest RR"));
-
-			shuffle();
+		Random random = new Random();
+		while (discards.size() > 0) {
+			int index = Math.abs(random.nextInt()) % discards.size();
+			cards.add(discards.get(index));
+			discards.remove(index);
 		}
-
-		public void shuffle() {
-			
-			System.out.println("shuffling chance");
-
-			Random random = new Random();
-			while(discards.size()>0) {
-				int index = Math.abs(random.nextInt())%discards.size();
-				cards.add(discards.get(index));
-				discards.remove(index);
-			}
-		}
-
-		public int getChance(int location) {
-			
-			int rval = location;
-
-			if(cards.size()==0) {
-				shuffle();
-			}
-			
-			ChanceCard card = (ChanceCard)cards.get(0);
-			cards.remove(0);
-			discards.add(card);
-			if(card.type==1) {
-				rval = 10;
-			}
-			
-			else if(card.type==2) {
-				loops++;
-				rval = 0;
-			}
-			
-			else if(card.type==3) {
-				if(location>11) {
-					loops++;
-				}
-				
-				rval = 11;
-			}
-			
-			else if(card.type==4) {
-				rval = 39;
-			}
-			
-			else if(card.type==5) {
-				if(location==7) {
-					rval = 12;
-				}
-				
-				else if(location==22) {
-					rval = 28;
-				}
-				
-				else if(location==36) {
-					loops++;
-					rval = 12;
-				}
-				
-				else {
-					System.out.println("I fucked up");
-				}
-			}
-			
-			else if(card.type==6) {
-				if(location>24) {
-					loops++;
-				}
-				
-				rval = 24;
-			}
-			
-			else if(card.type==7) {
-				loops++;
-				rval = 5;
-			}
-			
-			else if(card.type==8) {
-				rval = location-3;
-			}
-			else if(card.type==9) {
-				if(location==7) {
-					rval = 15;
-				}
-				
-				else if(location==22) {
-					rval = 25;
-				}
-				
-				else if(location==36) {
-					loops++;
-					rval = 5;
-				}
-			}
-
-			//			System.out.println("GOT Chance: "+card.label);
-
-
-			return(rval);
-		}
-
+	}
+	
+	
+	public void getCard(){
+		
+		
+		
 	}
 
 	class ChanceCard {
-		
+
 		public int type;
 		public String label;
 
 		public ChanceCard(int cardtype, String cardname) {
-			
+
 			type = cardtype;
 			label = cardname;
 		}
 	}
-	
+}
