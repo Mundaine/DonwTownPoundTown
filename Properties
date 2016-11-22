@@ -1,0 +1,495 @@
+package DangDirtyOomans;
+
+import java.io.BufferedReader;
+import DangDirtyOomans.GenerateBoard;
+import DangDirtyOomans.Player;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Properties {
+	
+
+	static String userInput;
+	static int userInt;
+	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+	private static void GO() throws IOException {
+		
+		if() {
+			System.out.println("You passed GO collect $200");
+			//number 1 on board
+		}
+	}
+		
+		private static void place2() throws IOException {
+			
+			System.out.println("[Purple]\nMediterranean Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Mediterranean Avenue for $60");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place3() throws IOException {
+			System.out.println("Community Chest! Pick a card.");
+			
+		}
+		
+		private static void place4() throws IOException {
+			System.out.println("[Purple]\nBaltic Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Baltic Avenue for $60");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place5() throws IOException {
+			System.out.println("Income Tax\n\n1. 10%\nor\n2. $200");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You payed: ");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println("You payed: $200");
+			}
+			
+		}
+			
+		
+	
+		private static void place6() throws IOException {
+			System.out.println("Reading Railroad\nPrice: $200\n\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Reading Railroad for $200");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		
+		private static void place7() throws IOException {
+			System.out.println("[Cyan]\nOriental Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Oriental Avenue for $100");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+			
+		}
+		
+		private static void place8() throws IOException {
+			System.out.println("You landed on Chance! Pick a card.");
+		}
+		
+		private static void place9() throws IOException {
+			System.out.println("[Cyan]\nVermont Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Vermont Avenue for $100");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place10() throws IOException {
+			System.out.println("[Cyan]\nConnecticut Avenue\nPrice: $120\nWould you like to buy this property\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Connecticut Avenue for $120");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void justVisiting() throws IOException {
+			
+			System.out.println("Just visiting");
+			
+			//number 11 on board
+		}
+		
+		private static void place12() throws IOException {
+			System.out.println("[Pink]\nSt. Charles Place\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought St. Charles Place for $140");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place13() throws IOException {
+			System.out.println("Electric Company\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Electric Company for $150");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place14() throws IOException {
+			System.out.println("[Pink]\nStates Avenue\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought States Avenue for $140");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place15() throws IOException {
+			System.out.println("[Pink]\nVirginia Avenue\nPrice: $160\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Virginia Avenue for $100");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place16() throws IOException {
+			System.out.println("Pennsylvania Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Pennsylvania Railroad for $200");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+			
+		}
+		
+		private static void place17() throws IOException {
+			System.out.println("[Orange]\nSt. James Place\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought St. James Place for $100");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place18() throws IOException {
+			System.out.println("Community Chest\nPick a Card");
+			
+		}
+		
+		private static void place19() throws IOException {
+			System.out.println("[Orange]\nTennessee Avenue\nPrice: $180");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Twnnessee Avenue for $180");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place20() throws IOException {
+			System.out.println("[Orange]\nNew York Avenue\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought New York Avenue for $200");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void freeParking() throws IOException {
+			
+			System.out.println("You Landed on Free Parking");
+			//number 21 on board
+		}
+		
+		private static void place22() throws IOException {
+			System.out.println("[Red]\nKentucky Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Kentucky Avenue for $220");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place23() throws IOException {
+			System.out.println("You landed on Chance! Pick a card");
+			
+		}
+		
+		private static void place24() throws IOException {
+			System.out.println("[Red]\nIndiana Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Indiana Avenue for $220");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place25() throws IOException {
+			System.out.println("[Red]\nIllinois Avenue\nPrice: $240\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Illinois Avenue for $240");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place26() throws IOException {
+			System.out.println("B. & O. Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought B. & O. Railroad for $200");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place27() throws IOException {
+			System.out.println("[Yellow]\nAtlantic Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Atlantic Avenue for $260");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place28() throws IOException {
+			System.out.println("[Yellow]\nVentnor Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Ventnor Avenue for $260");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place29() throws IOException {
+			System.out.println("Water Works\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Water Works for $150");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place30() throws IOException {
+			System.out.println("[Yellow]\nMarvin Gardens\nPrice: $280\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Marvin Gardens for $280");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void goToJail() throws IOException {
+			
+		if() {
+			System.out.println("Go to Jail! Do not pass Go! Do not collect $200!");
+			
+			//number 31 on board
+		}
+		}
+		
+		private static void place32() throws IOException {
+			System.out.println("[Green]\nPacific Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Pacific Avenue for $300");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place33() throws IOException {
+			System.out.println("[Green]\nNorth Carolina Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought North Carolina Avenue for $300");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place34() throws IOException {
+			System.out.println("You landed on Community Chest! Pick a card.");
+			
+		}
+		
+		private static void place35() throws IOException {
+			System.out.println("[Green]\nPennsylvania Avenue\nPrice: $320\nWould you like to buy this Property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Pennsylvania Avenue for $320");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place36() throws IOException {
+			System.out.println("Short Line\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Short Line for $200");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+			
+		}
+		
+		private static void place37() throws IOException {
+			System.out.println("You landed on Chance! Pick a card.");
+			
+		}
+		
+		private static void place38() throws IOException {
+			System.out.println("[Blue]\nPark Place\nPrice: $350\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Park Place for $350");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+		
+		private static void place39() throws IOException {
+			System.out.println("You landed on Luxury Tax\n\nPay: $75");
+			
+		}
+		
+		private static void place40() throws IOException {
+			System.out.println("[Blue]\nBoardwalk\nPrice: $400\nWould you like to buy this property?\n1. Yes\n2. No");
+			userInput = in.readLine();
+			userInt = Integer.parseInt(userInput);
+			
+			if(userInt == 1) {
+				System.out.println("You bought Boardwalk for $400");
+			}
+			
+			else if(userInt == 2) {
+				System.out.println(" ");
+			}
+		}
+	
+
+}
