@@ -1,0 +1,337 @@
+mport java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Game {
+	static Random rd = new Random();
+
+	public static void main(String[] args) throws IOException {
+
+		Player playerNumbers = new Player();
+		playerNumbers.countPlayers();
+		System.out.println("\nThe visual representation of the board shall now be presented:");
+		System.out.println();
+		GenerateBoard boardPrint = new GenerateBoard();
+		boardPrint.generateBoard();
+		// ArrayList player1 = new ArrayList();
+		// ArrayList player2 = new ArrayList();
+		// ArrayList player3 = new ArrayList();
+		// ArrayList player4 = new ArrayList();
+		// ArrayList player5 = new ArrayList();
+		// ArrayList player6 = new ArrayList();
+		// ArrayList player7 = new ArrayList();
+		// ArrayList player8 = new ArrayList();
+		theBankctioneer(7);
+	}
+
+	public static void theBankctioneer(int playerNumbers) throws IOException {
+		System.out.println(
+				"Please select one of the players to be the banker, good Banker who will also make a good Auctioneer.");
+		int banker = ConsoleUI.promptForInt("Select the player number to be the Banker / Auctioneer.", 1, 8);
+		// print out the name and piece of the player
+		System.out.println("Player " + banker + " will be the Banker.");
+		int auctioneer = 0;
+		boolean auctionerEqualBanker = true;
+		if (playerNumbers > 5) {
+
+			boolean bankAuction = ConsoleUI.promptForBool(
+					"There are more than 5 players, does the selected Banker want to act as Banker and Auctioner? Y/N",
+					"Y", "N");
+
+			if (bankAuction == false) {
+				auctioneer = ConsoleUI.promptForInt("Enter the number of the player who shall be the Auctioneer", 1, 8);
+				while (auctionerEqualBanker) {
+					
+					if(auctioneer == banker)
+					System.out.println(
+							"It has been previously stated that the Banker and the Auctioneer would be different players");
+					auctionerEqualBanker = ConsoleUI.promptForBool(
+							"Would you like to make the Auctioneer and the Banker the same person? Y/N", "Y", "N");
+					auctioneer = ConsoleUI.promptForInt("Enter the number of the player who shall be the Auctioneer", 1,
+							8);
+					
+				}
+			}
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Game {
+
+	private static int playerOneSpace = 1;
+	private static int playerTwoSpace = 1;
+	private static int playerThreeSpace = 1;
+	private static int playerFourSpace = 1;
+	private static int playerFiveSpace = 1;
+	private static int playerSixSpace = 1;
+	private static int playerSevenSpace = 1;
+	private static int playerEightSpace = 1;
+
+	// make rule book class to contain if statements and bankctioneer and shit
+
+	public static void main(String[] args) throws IOException {
+
+		Player playerNumbers = new Player();
+		int numberOfPlayers = playerNumbers.countPlayers();
+
+		Player players = new Player();
+		players.howManyWithName();
+
+		Player playersThemselves1 = new Player();
+		String player1 = playersThemselves1.player1();
+
+		Player playersThemselves2 = new Player();
+		String player2 = playersThemselves2.player2();
+
+		Player playersThemselves3 = new Player();
+		String player3 = playersThemselves3.player3();
+
+		Player playersThemselves4 = new Player();
+		String player4 = playersThemselves4.player4();
+
+		Player playersThemselves5 = new Player();
+		String player5 = playersThemselves5.player5();
+
+		Player playersThemselves6 = new Player();
+		String player6 = playersThemselves6.player6();
+
+		Player playersThemselves7 = new Player();
+		String player7 = playersThemselves7.player7();
+
+		Player playersThemselves8 = new Player();
+		String player8 = playersThemselves8.player8();
+
+		System.out.println("\nThe visual representation of the board shall now be presented:");
+		System.out.println();
+		GenerateBoard boardPrint = new GenerateBoard();
+		boardPrint.generateBoard();
+		theBankctioneer(numberOfPlayers);
+		for (int count = 1; count < numberOfPlayers; count++) {
+			if (count == 1) {
+				playerTurnSwitch(player1, count);
+			} else if (count == 2) {
+				playerTurnSwitch(player2, count);
+			} else if (count == 3) {
+				playerTurnSwitch(player3, count);
+			} else if (count == 4) {
+				playerTurnSwitch(player4, count);
+			} else if (count == 5) {
+				playerTurnSwitch(player5, count);
+			} else if (count == 6) {
+				playerTurnSwitch(player6, count);
+			} else if (count == 7) {
+				playerTurnSwitch(player7, count);
+			} else if (count == 8) {
+				playerTurnSwitch(player8, count);
+			}
+			count++;
+			if (count == numberOfPlayers)
+				count = 1;
+		}
+	}
+
+	public static void theBankctioneer(int numberOfPlayers) throws IOException {
+		System.out.println(
+				"Please select one of the players to be the banker, good Banker who will also make a good Auctioneer.");
+		int banker = ConsoleUI.promptForInt("Select the player number to be the Banker / Auctioneer.", 1,
+				numberOfPlayers);
+		// print out the name and piece of the player
+		System.out.println("Player " + banker + " will be the Banker.");
+		int auctioneer = 0;
+		boolean auctionerEqualBanker = false;
+		String bankAndAuction = "Player " + banker + " will be both the Banker and the Auctioneer.";
+		if (numberOfPlayers > 5) {
+
+			boolean bankAuction = ConsoleUI.promptForBool(
+					"There are more than 5 players, does the selected Banker want to act as Banker and Auctioner? Y/N",
+					"Y", "N");
+
+			if (bankAuction == true)
+				System.out.println(bankAndAuction);
+
+			else if (bankAuction == false) {
+
+				auctioneer = ConsoleUI.promptForInt("Enter the number of the player who shall be the Auctioneer", 1,
+						numberOfPlayers);
+				while (auctionerEqualBanker != true) {
+
+					if (auctioneer == banker) {
+						System.out.println(
+								"It has been previously stated that the Banker and the Auctioneer would be different players");
+
+						auctionerEqualBanker = ConsoleUI.promptForBool(
+								"Would you like to make the Auctioneer and the Banker the same person? Y/N", "Y", "N");
+
+						if (auctionerEqualBanker != true) {
+							auctioneer = ConsoleUI.promptForInt(
+									"Enter the number of the player who shall be the Auctioneer", 1, numberOfPlayers);
+						} else if (auctionerEqualBanker) {
+							System.out.println(bankAndAuction);
+						}
+					}
+					if (auctioneer != banker) {
+						auctionerEqualBanker = true;
+						System.out.println("Player " + auctioneer + " will be the Auctioneer.");
+					}
+
+				}
+			}
+		}
+	}
+
+	public static void playerOptionsOnTurn(String playerName) throws IOException {
+		System.out.println("A menu containing available, helpful options shall now be presented.");
+		String[] optionsMenu = new String[5];
+		optionsMenu[0] = "Check Available Property";
+		optionsMenu[1] = "Check amount of money available";
+		optionsMenu[2] = "Check available cards";
+		optionsMenu[3] = "Check at which space player currently resides";
+		optionsMenu[4] = "Check which piece player is";
+
+		int userAns = ConsoleUI.promptForMenuSelection(optionsMenu, true);
+		if (userAns == 1) {
+			System.out.println("Available property for player " + playerName + " is");
+			System.out.println();
+			// make unique arrayList for player's property, money, etc.
+		}
+		if (userAns == 2) {
+			System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
+			System.out.println();
+			// the sum of the arrayList money for the player
+		}
+		if (userAns == 3) {
+			System.out.println("The available cards player " + playerName + " has are:");
+			System.out.println();
+			// print arrayList of cards available, if arrayList.size()==0,
+			// print are there are no available cards for player
+		}
+		if (userAns == 4) {
+			System.out.println("The space that the player " + playerName + " currently resides is:");
+			System.out.println();
+			// player space
+		}
+		if (userAns == 5) {
+			System.out.println("The piece that player " + playerName + " is shall now be displayed:");
+			// ... I guess this will be sorted out through playerPieces
+			// return playerPieceX
+		}
+	}
+
+	public static void playerTurnSwitch(String playerName, int count) throws IOException {
+
+		if (count == 1) {
+
+			System.out.println("It's player 1's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerOneSpace, count);
+
+		} else if (count == 2) {
+			System.out.println("It's player 2's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerTwoSpace, count);
+
+		} else if (count == 3) {
+			System.out.println("It's player 3's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerThreeSpace, count);
+
+		} else if (count == 4) {
+			System.out.println("It's player 4's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerFourSpace, count);
+
+		} else if (count == 5) {
+			System.out.println("It's player 5's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerFiveSpace, count);
+
+		} else if (count == 6) {
+			System.out.println("It's player 6's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerSixSpace, count);
+
+		} else if (count == 7) {
+			System.out.println("It's player 7's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerSevenSpace, count);
+
+		} else if (count == 8) {
+			System.out.println("It's player 8's " + playerName + " turn");
+			playerOptionsOnTurn(playerName);
+			diceRoller(playerName, playerEightSpace, count);
+		}
+
+	}
+
+	public static void diceRoller(String playerName, int playerMove, int whichPlayer) {
+		System.out.println("Player " + playerName + " is currently at space " + playerMove + ".");
+		Random rd = new Random();
+		int dice1 = rd.nextInt(6) + 1;
+		int dice2 = rd.nextInt(6) + 1;
+		int totalMovementSpace = dice1 + dice2;
+
+		System.out.println("Dice one: " + dice1 + "\nDice two: " + dice2);
+		System.out.println("The player will move a total of " + totalMovementSpace + " spaces.");
+
+		while (totalMovementSpace > 0) {
+			if (playerMove == 41) {
+				playerMove = 1;
+			}
+			playerMove += 1;
+			totalMovementSpace--;
+		}
+		if (whichPlayer == 1) {
+			playerOneSpace = playerMove;
+		} else if (whichPlayer == 2) {
+			playerTwoSpace = playerMove;
+		} else if (whichPlayer == 3) {
+			playerThreeSpace = playerMove;
+		} else if (whichPlayer == 4) {
+			playerFourSpace = playerMove;
+		} else if (whichPlayer == 5) {
+			playerFiveSpace = playerMove;
+		} else if (whichPlayer == 6) {
+			playerSixSpace = playerMove;
+		} else if (whichPlayer == 7) {
+			playerSevenSpace = playerMove;
+		} else if (whichPlayer == 8) {
+			playerEightSpace = playerMove;
+		}
+
+		System.out.println("Player " + playerName + " is now at space " + playerMove + ".");
+
+	}
+
+	public void playerSpaceLocation(int playerSpace) {
+
+		if (playerSpace == 26) {
+			System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+			// get a chance card for the player
+		}
+
+	}
+
+	/*
+	 * 
+	 * properties cards chance / chest etc have rules properly implement7ed, can
+	 * add or modify in here call player have players get their pieces (through
+	 * player pieces) allow players to move have menu for players to move check
+	 * if the space of the player has options have menu for the options of the
+	 * place the player lands on i.e. buy, pay rent or tax, obtain a card,
+	 * upgrade property, do not print if there is nothing available allow other
+	 * player to move (if statement with a playerCount that will increase to
+	 * allow players to move after another player already moved) keep track of
+	 * money per player, where the player each, player property have options
+	 * menu at the beginning of every player movement: check money, check their
+	 * properties, view board, move, sell or utilize get out of jail card,
+	 * declare bankruptcy if player declares bankruptcy his properties get
+	 * auctioned (deal with mortgage) if player lands on property and doesn't
+	 * buy, property gets auctioned when choosing to auction, process can not
+	 * stop until process is finished
+	 * 
+	 * 
+	 * 
+	 * end game if all but one player declares bankruptcy
+	 */
+
+}
