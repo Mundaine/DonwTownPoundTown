@@ -1,80 +1,59 @@
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Collections;
+import java.util.List;
 
-// make it so that when a player lands on a spot with chance card pull, this gets called
 public class Chance {
-	ArrayList cards = new ArrayList<ChanceCard>();
 
-	ArrayList discards = new ArrayList<ChanceCard>();
+		ArrayList<ChanceCard> cards;
+		
+		public void ChanceDeck() {
+			cards = new ArrayList<ChanceCard>();
 
-	@SuppressWarnings("unchecked")
-	public void ChanceDeck() {
+			cards.add(new ChanceCard(0, "Get Out of Jail Free Card. (With this you can use it to get out of jail without having to pay for bail.)"));
+			cards.add(new ChanceCard(1, "Pay Poor Tax of $15. (Give $15)"));
+			cards.add(new ChanceCard(2, "Elected Chairman of the Board. (Pay each player $50.)"));
+			cards.add(new ChanceCard(3, "Bank Pays you dividend of $50. (Collect $50.)"));
+			cards.add(new ChanceCard(4, "Your building loan matures. (Collect $150.)"));
+			cards.add(new ChanceCard(5, "Make General Repairs on all Property. (For each house pay $25, For each hotel pay $100.)"));
+			cards.add(new ChanceCard(6, "GO TO JAIL. (Move player to the jail space.)"));
+			cards.add(new ChanceCard(7, "Advance to Go. (Move player to GO space and collect $200.)"));
+			cards.add(new ChanceCard(8, "Advance to St. Charles Place.(Move player to St. Charles Place.)"));
+			cards.add(new ChanceCard(9, "Advance to Boardwalk. (Move player to Boardwalk space.)"));
+			cards.add(new ChanceCard(10, "Advance to Nearest Utility. (Move Player to the nearest utility space. If utility is owned by another player than throw dice and pay ten times the amount thrown.)"));
+			cards.add(new ChanceCard(11, "Advance to Illinois Avenue. (Move player to Illinois Avenue space.)"));
+			cards.add(new ChanceCard(12, "Advance to Reading Railroad. (Move playe to Reading Railroad space.)"));
+			cards.add(new ChanceCard(13, "Go back 3 spaces. (Move player back 3 spaces.)"));
+			cards.add(new ChanceCard(14, "Advance to nearest Railroad. (Move player to the neaest Railroad space. If Railroad is owned by another player pay twice the rental.)"));
+			cards.add(new ChanceCard(15, "Take a trip to nearest Railroad"));
+			cards.add(new ChanceCard(16, "You have won a crossword competition. (Collect $100.)"));
 
-		discards.add(new ChanceCard(0, "Get out of Jail Free"));
-		// can be sold and or sold until needed
-		discards.add(new ChanceCard(1, "Pay Poor Tax"));
-		// 15
-		discards.add(new ChanceCard(2, "Elected Chairman of the Board"));
-		// pay each player 50
-		discards.add(new ChanceCard(3, "Bank Pays"));
-		// dividend of 50
-		discards.add(new ChanceCard(4, "Your building loan matures"));
-		// collect 150
-		discards.add(new ChanceCard(5, "Make General Repairs on all Property"));
-		// for each house 25, hotel 100
-		discards.add(new ChanceCard(6, "GO TO JAIL"));
-		discards.add(new ChanceCard(7, "Advance to Go"));
-		// collect 200
-		discards.add(new ChanceCard(8, "Advance to St. Charles Place"));
-		// collect 200 if passed GO
-		discards.add(new ChanceCard(9, "Advance to Boardwalk"));
-		// can buy if unowned
-		discards.add(new ChanceCard(10, "Advance to Nearest Utility"));
-		// if unowned, can buy. if owned, roll dice and pay player x10 amount
-		// thrown
-		discards.add(new ChanceCard(11, "Advance to Illinois Avenue"));
-		// collect 200 if passed GO
-		discards.add(new ChanceCard(12, "Advance to reading"));
-		discards.add(new ChanceCard(13, "Go back 3 spaces"));
-		// pay rent if landed on owned property
-		discards.add(new ChanceCard(14, "Advance to nearest Railroad"));
-		// pay owner twice the rent amount , else can buy
-		discards.add(new ChanceCard(15, "Take a trip to nearest Railroad"));
-		// if pass go collect 200
-		discards.add(new ChanceCard(16, "You have won a crossword competition"));
-		// collect 100
+			shuffle(cards);
+		}
 
-		shuffle();
-	}
+		public void shuffle(List<ChanceCard> cards) {
+			Collections.shuffle(cards);
+		}
+		
+		
+		public void getCard(){
+			int i = 0;
+			ChanceCard card = (ChanceCard) cards.get(i);
+			System.out.println("GOT Chance: " + card.label);
+			cards.remove(card);
+			cards.add(card);
+			i++;
+			
+		}
 
-	public void shuffle() {
+		class ChanceCard {
 
-		System.out.println("shuffling chance deck");
+			public int type;
+			public String label;
 
-		Random random = new Random();
-		while (discards.size() > 0) {
-			int index = Math.abs(random.nextInt()) % discards.size();
-			cards.add(discards.get(index));
-			discards.remove(index);
+			public ChanceCard(int cardtype, String cardname) {
+
+				type = cardtype;
+				label = cardname;
+			}
 		}
 	}
-	
-	
-	public void getCard(){
-		
-		
-		
-	}
-
-	class ChanceCard {
-
-		public int type;
-		public String label;
-
-		public ChanceCard(int cardtype, String cardname) {
-
-			type = cardtype;
-			label = cardname;
-		}
-	}
-}
