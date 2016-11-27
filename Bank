@@ -1,10 +1,7 @@
-package DangDirtyOomans;
-
 import java.io.IOException;
 
 public class Bank {
-	
-	
+
 	static int oneDollar;
 	static int twoDollars;
 	static int fiveDollars;
@@ -13,64 +10,58 @@ public class Bank {
 	static int fiftyDollars;
 	static int hundredDollars;
 	static int fiveHundredDollars;
-	
+
 	static String money, userMoney, maxMoney, minMoney, Bank, Banker, dollars, bills;
 	static boolean cash;
 	static boolean currency;
-	
-	public static enum moneyBills { one, five, ten, twenty, fifty, hundred, fiveHundred }
-	
-	
-	
+
+	public static enum moneyBills {
+		one, five, ten, twenty, fifty, hundred, fiveHundred
+	}
+
 	private static void money() throws IOException {
-		
-		oneDollar = '1';
-		twoDollars = '2';
-		fiveDollars = '5';
-		tenDollars = '10';
-		twentyDollars = '20';
-		fiftyDollars = '50';
-		hundredDollars = '100';
-		fiveHundredDollars = '500';
-		
-		
+
+		oneDollar = 1;
+		twoDollars = 2;
+		fiveDollars = 5;
+		tenDollars = 10;
+		twentyDollars = 20;
+		fiftyDollars = 50;
+		hundredDollars = 100;
+		fiveHundredDollars = 500;
+
 	}
-	
+
 	private static void bankerPaysUser() throws IOException {
-		
-		//System.out.println("Banker gives you " + owesPlayer);
-		
-		
+
+		// System.out.println("Banker gives you " + owesPlayer);
+
 	}
-	
+
 	private static void playerPaysBanker() throws IOException {
-		
-		//System.out.println("You owe the bank " + playerOwes);
-		
+
+		// System.out.println("You owe the bank " + playerOwes);
+
 	}
-	
-	
+
 	private static void cardLink() throws IOException {
-		
+
 	}
-	
+
 	private static void playerLink() throws IOException {
-		
+
 	}
-	
+
 	private static void GO() throws IOException {
-		
+
 	}
-	
+
 	private static void propertyPayment() throws IOException {
-		
+
 	}
-	
+
 	private static void mortgage() throws IOException {
-		
+
 	}
-	}
-		
-		
-		
-		
+}
+	
