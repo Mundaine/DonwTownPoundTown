@@ -1,76 +1,59 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-Community Chest Code.... Not fully working
+public class CommunityChest {
 
+	ArrayList<ChestCard> cards;
 
-ArrayList<ChestCard> cards;
-ArrayList<ChestCard> discards;
+	public void ChestDeck() {
 
-		public ChestDeck() {
-			cards = new ArrayList<ChestCard>();
-			discards = new ArrayList<ChestCard>();
+		cards = new ArrayList<ChestCard>();
 
-			discards.add(new ChestCard(0,"second prize"));
-			discards.add(new ChestCard(0,"bank error"));
-			discards.add(new ChestCard(0,"life insurance"));
-			discards.add(new ChestCard(0,"income tax refund"));
-			discards.add(new ChestCard(0,"grand opera opening"));
-			discards.add(new ChestCard(0,"recieve for services"));
-			discards.add(new ChestCard(0,"you inherit"));
-			discards.add(new ChestCard(0,"get out of jail free"));
-			discards.add(new ChestCard(0,"street repairs"));
-			discards.add(new ChestCard(0,"doctor's fee"));
-			discards.add(new ChestCard(0,"pay school tax"));
-			discards.add(new ChestCard(0,"pay hospital"));
-			discards.add(new ChestCard(0,"xmas fund"));
-			discards.add(new ChestCard(0,"from sale of stock"));
-			discards.add(new ChestCard(1,"advance to go"));
-			discards.add(new ChestCard(2,"go to jail"));
+		cards.add(new ChestCard(0, "Advance to GO. (Collect $200.)"));
+		cards.add(new ChestCard(1, "Bank error in your favor. (Collect $200.)"));
+		cards.add(new ChestCard(2, "Doctor's fees. (Pay $50.)"));
+		cards.add(new ChestCard(3, "From sale of stock you get $50. (Collect $50."));
+		cards.add(new ChestCard(4, "Get Out of Jail Free Card. (With this you can use it to get out of jail without having to pay for bail.)"));
+		cards.add(new ChestCard(5, "Go to Jail. (Move to jail space)"));
+		cards.add(new ChestCard(6, "Grand Opera Night. (Collect $50 from every player for opening night seats.)"));
+		cards.add(new ChestCard(7, "Holiday Fund matures. (Collect $100.)"));
+		cards.add(new ChestCard(8, "Income tax refund. (Colect $20.)"));
+		cards.add(new ChestCard(9, "It is your birthday. (Collect $10 from each player.)"));
+		cards.add(new ChestCard(10, "Life insurance matures. (Collect $100.)"));
+		cards.add(new ChestCard(11, "Pay hospital fees of $100. (Give $100 to the bank.)"));
+		cards.add(new ChestCard(12, "Pay school fees of $150. (Give $150 to the bank.)"));
+		cards.add(new ChestCard(13, "Recieve $25 consultancy fee. (Collect $25.)"));
+		cards.add(new ChestCard(14, "You are assessed for street repairs. (Pay $40 per house and $115 per hotel.)"));
+		cards.add(new ChestCard(15, "You have won second prize in a beauty contest. (Collect $10.)"));
+		cards.add(new ChestCard(16, "You inherit $100. (Collect $100"));
+		shuffle(cards);
+	}
 
-			shuffle();
-		}
+	public static void shuffle(List<ChestCard> cards) {
+		Collections.shuffle(cards);
+	}
 
-		public void shuffle() {
-			//			System.out.println("shuffling chest");
+	public void getChest() {
+		int i = 0;
+		//System.out.println(cards);
+		ChestCard card = (ChestCard) cards.get(i);
+		System.out.println("GOT CommunityChest: " + card.label);
+		cards.remove(card);
+		//sout
+		cards.add(card);
+		//sout
+		i++;
+	}
 
-			Random random = new Random();
-			while(discards.size()>0) {
-				int index = Math.abs(random.nextInt())%discards.size();
-				cards.add(discards.get(index));
-				discards.remove(index);
-			}
-		}
-
-		public int getChest(int location) {
-			int rval = location;
-
-			if(cards.size()==0) {
-				shuffle();
-			}
-			ChestCard card = (ChestCard)cards.get(0);
-			cards.remove(0);
-			discards.add(card);
-			if(card.type==1) {
-				loops++;
-				location = 0;
-			}
-			else if(card.type==2) {
-				location = 10;
-			}
-
-			System.out.println("GOT CommunityChest: "+card.label);
-
-			return(rval);
-		}
-	
-	
 	class ChestCard {
-	public int type;
-	public String label;
 
-	public ChestCard(int cardtype, String cardname) {
+		public int type;
+		public String label;
+
+		public ChestCard(int cardtype, String cardname) {
 			type = cardtype;
 			label = cardname;
 		}
 	}
-
-
+}
