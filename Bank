@@ -19,6 +19,21 @@ public class Bank {
 		one, five, ten, twenty, fifty, hundred, fiveHundred
 	}
 
+
+
+*/
+ FOR EXAMPLE: 
+ have final int playerInitialMoney1, p2,p3,p4
+
+create another int playerMoney1, p2, p3, p4 = 0
+
+make playerInitialMoney1 to playerMoney1
+	playerInitialMoney2 = playerMoney2
+	
+	this takes care of having one final int, and then we can just use the new value of PlayerMoney (which will become 1500)
+
+*/
+
 	private static void money() throws IOException {
 
 		oneDollar = 1;
