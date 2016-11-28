@@ -1,5 +1,11 @@
 public class Bank {
 
+*/ For this class, we discussed it with another monopoly group and they're basically using just one integer for each player.
+This way, it's so very easy to subtract or add money from each player whenever it's required. We implemented a final int
+simply because it's a requirement in the rubric. 
+The methods are simply an idea.
+*/
+
 		final int playerInitialMoney = 1500;
 		int playerMoney = 0;
 	
