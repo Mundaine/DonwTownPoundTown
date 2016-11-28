@@ -1,471 +1,524 @@
+package edu.neumont.csc110.a.monopoly;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Properties {
 	private static boolean userBuy;
+*/
+The same concept for cards apply: A list is made with the information that's required. That way, we can easily add or remove
+properties from each player. In order to make this possible, though, an arrayList for each player will need to be done. For Example
+ArrayList<String> player1Properies
+ArrayList<String> player2Properties
+so on and so forth.
+The code that's already been written is not bad, but as they're only sout lines, it doesn't really do anything.
 
+*/
 	private static void GO() throws IOException {
-
-		if (true) {
-			System.out.println("You passed GO collect $200");
-			// number 1 on board
-		}
-	}
-
-	private static void place2() throws IOException {
-
-		System.out.println();
-		userBuy = ConsoleUI.promptForBool(
-				"[Purple]\nMediterranean Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No",
-				"Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Mediterranean Avenue for $60");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place3() throws IOException {
-		System.out.println("Community Chest! Pick a card.");
-
-	}
-
-	private static void place4() throws IOException {
-		System.out.println();
-		userBuy = ConsoleUI.promptForBool(
-				"[Purple]\nBaltic Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-		if (userBuy == true) {
-			System.out.println("You bought Baltic Avenue for $60");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place5() throws IOException {
-		System.out.println();
-		userBuy = ConsoleUI.promptForBool("Income Tax. Would you like to pay:\n\n1. 10 %\nor\n2. $200", "10 %", "$200");
-		// pay 10 per cent or 200
-
-		if (userBuy == true) {
-			System.out.println("You payed: ");
-		}
-
-		else if (userBuy == false) {
-			System.out.println("You payed: $200");
-		}
-
-	}
-
-	private static void place6() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"Reading Railroad\nPrice: $200\n\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Reading Railroad for $200");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place7() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Cyan]\nOriental Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Oriental Avenue for $100");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-
-	}
-
-	private static void place8() throws IOException {
-		System.out.println("You landed on Chance! Pick a card.");
-	}
-
-	private static void place9() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Cyan]\nVermont Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Vermont Avenue for $100");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place10() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Cyan]\nConnecticut Avenue\nPrice: $120\nWould you like to buy this property\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Connecticut Avenue for $120");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void justVisiting() throws IOException {
-
-		System.out.println("Just visiting");
-
-		// number 11 on board
-	}
-
-	private static void place12() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Pink]\nSt. Charles Place\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought St. Charles Place for $140");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place13() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"Electric Company\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Electric Company for $150");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place14() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Pink]\nStates Avenue\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought States Avenue for $140");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place15() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Pink]\nVirginia Avenue\nPrice: $160\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Virginia Avenue for $100");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place16() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"Pennsylvania Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Pennsylvania Railroad for $200");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-
-	}
-
-	private static void place17() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Orange]\nSt. James Place\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought St. James Place for $100");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place18() throws IOException {
-		System.out.println("Community Chest\nPick a Card");
-
-	}
-
-	private static void place19() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Orange]\nTennessee Avenue\nPrice: $180\nWould you like to buy this property? Yes/No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Tennessee Avenue for $180");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place20() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Orange]\nNew York Avenue\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought New York Avenue for $200");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void freeParking() throws IOException {
-
-		System.out.println("You Landed on Free Parking");
-		// number 21 on board
-	}
-
-	private static void place22() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Red]\nKentucky Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Kentucky Avenue for $220");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place23() throws IOException {
-		System.out.println("You landed on Chance! Pick a card");
-
-	}
-
-	private static void place24() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Red]\nIndiana Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Indiana Avenue for $220");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place25() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Red]\nIllinois Avenue\nPrice: $240\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Illinois Avenue for $240");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place26() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"B. & O. Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought B. & O. Railroad for $200");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place27() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Yellow]\nAtlantic Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Atlantic Avenue for $260");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place28() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Yellow]\nVentnor Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Ventnor Avenue for $260");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place29() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"Water Works\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Water Works for $150");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place30() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Yellow]\nMarvin Gardens\nPrice: $280\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Marvin Gardens for $280");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void goToJail() throws IOException {
-
-		if (true) {
-			System.out.println("Go to Jail! Do not pass Go! Do not collect $200!");
-
-			// number 31 on board
-		}
-	}
-
-	private static void place32() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Green]\nPacific Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Pacific Avenue for $300");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place33() throws IOException {
-
-		userBuy = ConsoleUI.promptForBool(
-				"[Green]\nNorth Carolina Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\2. No",
-				"Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought North Carolina Avenue for $300");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place34() throws IOException {
-		System.out.println("You landed on Community Chest! Pick a card.");
-
-	}
-
-	private static void place35() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Green]\nPennsylvania Avenue\nPrice: $320\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
-				"No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Pennsylvania Avenue for $320");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place36() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"Short Line\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Short Line for $200");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-
-	}
-
-	private static void place37() throws IOException {
-		System.out.println("You landed on Chance! Pick a card.");
-
-	}
-
-	private static void place38() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Blue]\nPark Place\nPrice: $350\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Park Place for $350");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
-	private static void place39() throws IOException {
-		System.out.println("You landed on Luxury Tax\n\nPay: $75");
-
-	}
-
-	private static void place40() throws IOException {
-		userBuy = ConsoleUI.promptForBool(
-				"[Blue]\nBoardwalk\nPrice: $400\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
-
-		if (userBuy == true) {
-			System.out.println("You bought Boardwalk for $400");
-		}
-
-		else if (userBuy == false) {
-			System.out.println(" ");
-		}
-	}
-
+		ArrayList<String> propertyLocations = new ArrayList();
+		propertyLocations.add("GO");
+		propertyLocations.add("Mediterranean Avenue");
+		propertyLocations.add("Community Chest");
+		propertyLocations.add("Baltic Avenue");
+		propertyLocations.add("Income Tax");
+		propertyLocations.add("Reading Railroad");
+		propertyLocations.add("Oriental Avenue");
+		propertyLocations.add("Chance");
+		propertyLocations.add("Vermont Avenue");
+		propertyLocations.add("Connecticut Avenue");
+		propertyLocations.add("Jail/Just Visiting");
+		propertyLocations.add("St. Charles Place");
+		propertyLocations.add("Electric Company");
+		propertyLocations.add("States Avenue");
+		propertyLocations.add("Virginia Avenue");
+		propertyLocations.add("Pennsylvania Railroad");
+		propertyLocations.add("St. James Place");
+		propertyLocations.add("Comunity Chest");
+		propertyLocations.add("Tennessee Avenue");
+		propertyLocations.add("New York Avenue");
+		propertyLocations.add("Free Parking");
+		propertyLocations.add("Kentucky Avenue");
+		propertyLocations.add("Chance");
+		propertyLocations.add("Indiana Avenue");
+		propertyLocations.add("Illinois Avenue");
+		propertyLocations.add("B. & O. Railroad");
+		propertyLocations.add("Atlantic Avenue");
+		propertyLocations.add("Ventnor Avenue");
+		propertyLocations.add("Water Works");
+		propertyLocations.add("Marvin Gardens");
+		propertyLocations.add("Jail");
+		propertyLocations.add("Pacific Avenue");
+		propertyLocations.add("North Carolina");
+		propertyLocations.add("Community Chest");
+		propertyLocations.add("Pennsylvania Avenue");
+		propertyLocations.add("Short Line");
+		propertyLocations.add("Chance");
+		propertyLocations.add("Park Place");
+		propertyLocations.add("Luxury Tax");
+		propertyLocations.add("Boardwalk");
+//		if (true) {
+//			System.out.println("You passed GO collect $200");
+//			// number 1 on board
+//		}
+//	}
+//
+//	private static void place2() throws IOException {
+//
+//		System.out.println();
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Purple]\nMediterranean Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No",
+//				"Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Mediterranean Avenue for $60");
+//			// pl3
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place3() throws IOException {
+//		System.out.println("Community Chest! Pick a card.");
+//
+//	}
+//
+//	private static void place4() throws IOException {
+//		System.out.println();
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Purple]\nBaltic Avenue\nPrice: $60\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//		if (userBuy == true) {
+//			System.out.println("You bought Baltic Avenue for $60");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place5() throws IOException {
+//		System.out.println();
+//		userBuy = ConsoleUI.promptForBool("Income Tax. Would you like to pay:\n\n1. 10 %\nor\n2. $200", "10 %", "$200");
+//		// pay 10 per cent or 200
+//
+//		if (userBuy == true) {
+//			System.out.println("You payed: ");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println("You payed: $200");
+//		}
+//
+//	}
+//
+//	private static void place6() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"Reading Railroad\nPrice: $200\n\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Reading Railroad for $200");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place7() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Cyan]\nOriental Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Oriental Avenue for $100");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//
+//	}
+//
+//	private static void place8() throws IOException {
+//		System.out.println("You landed on Chance! Pick a card.");
+//	}
+//
+//	private static void place9() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Cyan]\nVermont Avenue\nPrice: $100\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Vermont Avenue for $100");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place10() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Cyan]\nConnecticut Avenue\nPrice: $120\nWould you like to buy this property\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Connecticut Avenue for $120");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void justVisiting() throws IOException {
+//
+//		System.out.println("Just visiting");
+//
+//		// number 11 on board
+//	}
+//
+//	private static void place12() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Pink]\nSt. Charles Place\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought St. Charles Place for $140");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place13() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"Electric Company\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Electric Company for $150");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place14() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Pink]\nStates Avenue\nPrice: $140\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought States Avenue for $140");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place15() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Pink]\nVirginia Avenue\nPrice: $160\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Virginia Avenue for $100");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place16() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"Pennsylvania Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Pennsylvania Railroad for $200");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//
+//	}
+//
+//	private static void place17() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Orange]\nSt. James Place\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought St. James Place for $100");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place18() throws IOException {
+//		System.out.println("Community Chest\nPick a Card");
+//
+//	}
+//
+//	private static void place19() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Orange]\nTennessee Avenue\nPrice: $180\nWould you like to buy this property? Yes/No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Tennessee Avenue for $180");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place20() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Orange]\nNew York Avenue\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought New York Avenue for $200");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void freeParking() throws IOException {
+//
+//		System.out.println("You Landed on Free Parking");
+//		// number 21 on board
+//	}
+//
+//	private static void place22() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Red]\nKentucky Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Kentucky Avenue for $220");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place23() throws IOException {
+//		System.out.println("You landed on Chance! Pick a card");
+//
+//	}
+//
+//	private static void place24() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Red]\nIndiana Avenue\nPrice: $220\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Indiana Avenue for $220");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place25() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Red]\nIllinois Avenue\nPrice: $240\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Illinois Avenue for $240");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place26() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"B. & O. Railroad\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought B. & O. Railroad for $200");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place27() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Yellow]\nAtlantic Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Atlantic Avenue for $260");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place28() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Yellow]\nVentnor Avenue\nPrice: $260\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Ventnor Avenue for $260");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place29() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"Water Works\nPrice: $150\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Water Works for $150");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place30() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Yellow]\nMarvin Gardens\nPrice: $280\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Marvin Gardens for $280");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void goToJail() throws IOException {
+//
+//		if (true) {
+//			System.out.println("Go to Jail! Do not pass Go! Do not collect $200!");
+//
+//			// number 31 on board
+//		}
+//	}
+//
+//	private static void place32() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Green]\nPacific Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Pacific Avenue for $300");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place33() throws IOException {
+//
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Green]\nNorth Carolina Avenue\nPrice: $300\nWould you like to buy this property?\n1. Yes\2. No",
+//				"Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought North Carolina Avenue for $300");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place34() throws IOException {
+//		System.out.println("You landed on Community Chest! Pick a card.");
+//
+//	}
+//
+//	private static void place35() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Green]\nPennsylvania Avenue\nPrice: $320\nWould you like to buy this Property?\n1. Yes\n2. No", "Yes",
+//				"No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Pennsylvania Avenue for $320");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place36() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"Short Line\nPrice: $200\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Short Line for $200");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//
+//	}
+//
+//	private static void place37() throws IOException {
+//		System.out.println("You landed on Chance! Pick a card.");
+//
+//	}
+//
+//	private static void place38() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Blue]\nPark Place\nPrice: $350\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Park Place for $350");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+//	private static void place39() throws IOException {
+//		System.out.println("You landed on Luxury Tax\n\nPay: $75");
+//
+//	}
+//
+//	private static void place40() throws IOException {
+//		userBuy = ConsoleUI.promptForBool(
+//				"[Blue]\nBoardwalk\nPrice: $400\nWould you like to buy this property?\n1. Yes\n2. No", "Yes", "No");
+//
+//		if (userBuy == true) {
+//			System.out.println("You bought Boardwalk for $400");
+//		}
+//
+//		else if (userBuy == false) {
+//			System.out.println(" ");
+//		}
+//	}
+//
+}
 }
