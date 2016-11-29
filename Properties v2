@@ -2,8 +2,75 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Properties {
+public class Propertiesv2 {
 	 static boolean userBuy;
+	 
+	 
+	
+/*public void playerArray() throws IOException {
+	
+	ArrayList<Propertiesv2> player1 = new ArrayList();
+	
+	player1.add("[Purple] Mediterranean Avenue");
+	
+	player1.add("[Purple] Baltic Avenue");
+	
+	player1.add("Reading Railroad");
+	player1.add("[Cyan] Oriental Avenue");
+	
+	player1.add("[Cyan] Vermont Avenue");
+	player1.add("[Cyan] Connecticut Avenue");
+	
+	player1.add("[Pink] St. Charles Place");
+	player1.add("Electric Company");
+	player1.add("[Pink] States Avenue");
+	player1.add("[Pink] Virginia Avenue");
+	player1.add("Pennsylvania Railroad");
+	player1.add("[Orange] St. James Place");
+	
+	propertyLocations.add("[Orange] Tennessee Avenue");
+	propertyLocations.add("[Orange] New York Avenue");
+	
+	propertyLocations.add("[Red] Kentucky Avenue");
+	
+	propertyLocations.add("[Red] Indiana Avenue");
+	propertyLocations.add("[Red] Illinois Avenue");
+	propertyLocations.add("B. & O. Railroad");
+	propertyLocations.add("[Yellow] Atlantic Avenue");
+	propertyLocations.add("[Yellow] Ventnor Avenue");
+	propertyLocations.add("Water Works");
+	propertyLocations.add("[Yellow] Marvin Gardens");
+	
+	propertyLocations.add("[Green] Pacific Avenue");
+	propertyLocations.add("[Green] North Carolina");
+	
+	propertyLocations.add("[Green] Pennsylvania Avenue");
+	propertyLocations.add("Short Line");
+	
+	propertyLocations.add("[Blue] Park Place");
+	
+	propertyLocations.add("[Blue] Boardwalk");
+}
+	 
+	 /*public static void arrays() throws IOException {
+		 
+		 
+		 shift = new ArrayList<playershift>();
+		 shift.add(new playershift())
+		 
+		 
+	 }
+		 
+		 public void shiftassign() {
+			 
+		 int i = 0;
+		 playershift shift = (playershift) shift.get(i);
+		 shifts.remove(shift);
+		 shifts.add(shift);
+		 i++;
+			 
+		 
+	 }*/
 
 	 static void GO() throws IOException {
 		ArrayList<String> propertyLocations = new ArrayList();
@@ -47,6 +114,49 @@ public class Properties {
 		propertyLocations.add("[Blue] Park Place");
 		propertyLocations.add("Luxury Tax");
 		propertyLocations.add("[Blue] Boardwalk");
+		
+			if(userBuy = true) {
+				
+				propertyLocations.remove("[Purple] Mediterranean Avenue");
+				
+				propertyLocations.remove("[Purple] Baltic Avenue");
+				
+				propertyLocations.remove("Reading Railroad");
+				propertyLocations.remove("[Cyan] Oriental Avenue");
+				
+				propertyLocations.remove("[Cyan] Vermont Avenue");
+				propertyLocations.remove("[Cyan] Connecticut Avenue");
+				
+				propertyLocations.remove("[Pink] St. Charles Place");
+				propertyLocations.remove("Electric Company");
+				propertyLocations.remove("[Pink] States Avenue");
+				propertyLocations.remove("[Pink] Virginia Avenue");
+				propertyLocations.remove("Pennsylvania Railroad");
+				propertyLocations.remove("[Orange] St. James Place");
+				
+				propertyLocations.remove("[Orange] Tennessee Avenue");
+				propertyLocations.remove("[Orange] New York Avenue");
+				
+				propertyLocations.remove("[Red] Kentucky Avenue");
+				
+				propertyLocations.remove("[Red] Indiana Avenue");
+				propertyLocations.remove("[Red] Illinois Avenue");
+				propertyLocations.remove("B. & O. Railroad");
+				propertyLocations.remove("[Yellow] Atlantic Avenue");
+				propertyLocations.remove("[Yellow] Ventnor Avenue");
+				propertyLocations.remove("Water Works");
+				propertyLocations.remove("[Yellow] Marvin Gardens");
+				
+				propertyLocations.remove("[Green] Pacific Avenue");
+				propertyLocations.remove("[Green] North Carolina");
+				
+				propertyLocations.remove("[Green] Pennsylvania Avenue");
+				propertyLocations.remove("Short Line");
+				
+				propertyLocations.remove("[Blue] Park Place");
+				
+				propertyLocations.remove("[Blue] Boardwalk");
+			}
 //		if (true) {
 //			System.out.println("You passed GO collect $200");
 //			// number 1 on board
