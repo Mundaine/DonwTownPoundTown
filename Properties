@@ -1,66 +1,57 @@
-package edu.neumont.csc110.a.monopoly;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Properties {
-	private static boolean userBuy;
-*/
-The same concept for cards apply: A list is made with the information that's required. That way, we can easily add or remove
-properties from each player. In order to make this possible, though, an arrayList for each player will need to be done. For Example
-ArrayList<String> player1Properies
-ArrayList<String> player2Properties
-so on and so forth.
-The code that's already been written is not bad, but as they're only sout lines, it doesn't really do anything.
+	 static boolean userBuy;
 
-*/
-	private static void GO() throws IOException {
+	 static void GO() throws IOException {
 		ArrayList<String> propertyLocations = new ArrayList();
 		propertyLocations.add("GO");
-		propertyLocations.add("Mediterranean Avenue");
+		propertyLocations.add("[Purple] Mediterranean Avenue");
 		propertyLocations.add("Community Chest");
-		propertyLocations.add("Baltic Avenue");
+		propertyLocations.add("[Purple] Baltic Avenue");
 		propertyLocations.add("Income Tax");
 		propertyLocations.add("Reading Railroad");
-		propertyLocations.add("Oriental Avenue");
+		propertyLocations.add("[Cyan] Oriental Avenue");
 		propertyLocations.add("Chance");
-		propertyLocations.add("Vermont Avenue");
-		propertyLocations.add("Connecticut Avenue");
+		propertyLocations.add("[Cyan] Vermont Avenue");
+		propertyLocations.add("[Cyan] Connecticut Avenue");
 		propertyLocations.add("Jail/Just Visiting");
-		propertyLocations.add("St. Charles Place");
+		propertyLocations.add("[Pink] St. Charles Place");
 		propertyLocations.add("Electric Company");
-		propertyLocations.add("States Avenue");
-		propertyLocations.add("Virginia Avenue");
+		propertyLocations.add("[Pink] States Avenue");
+		propertyLocations.add("[Pink] Virginia Avenue");
 		propertyLocations.add("Pennsylvania Railroad");
-		propertyLocations.add("St. James Place");
+		propertyLocations.add("[Orange] St. James Place");
 		propertyLocations.add("Comunity Chest");
-		propertyLocations.add("Tennessee Avenue");
-		propertyLocations.add("New York Avenue");
+		propertyLocations.add("[Orange] Tennessee Avenue");
+		propertyLocations.add("[Orange] New York Avenue");
 		propertyLocations.add("Free Parking");
-		propertyLocations.add("Kentucky Avenue");
+		propertyLocations.add("[Red] Kentucky Avenue");
 		propertyLocations.add("Chance");
-		propertyLocations.add("Indiana Avenue");
-		propertyLocations.add("Illinois Avenue");
+		propertyLocations.add("[Red] Indiana Avenue");
+		propertyLocations.add("[Red] Illinois Avenue");
 		propertyLocations.add("B. & O. Railroad");
-		propertyLocations.add("Atlantic Avenue");
-		propertyLocations.add("Ventnor Avenue");
+		propertyLocations.add("[Yellow] Atlantic Avenue");
+		propertyLocations.add("[Yellow] Ventnor Avenue");
 		propertyLocations.add("Water Works");
-		propertyLocations.add("Marvin Gardens");
+		propertyLocations.add("[Yellow] Marvin Gardens");
 		propertyLocations.add("Jail");
-		propertyLocations.add("Pacific Avenue");
-		propertyLocations.add("North Carolina");
+		propertyLocations.add("[Green] Pacific Avenue");
+		propertyLocations.add("[Green] North Carolina");
 		propertyLocations.add("Community Chest");
-		propertyLocations.add("Pennsylvania Avenue");
+		propertyLocations.add("[Green] Pennsylvania Avenue");
 		propertyLocations.add("Short Line");
 		propertyLocations.add("Chance");
-		propertyLocations.add("Park Place");
+		propertyLocations.add("[Blue] Park Place");
 		propertyLocations.add("Luxury Tax");
-		propertyLocations.add("Boardwalk");
+		propertyLocations.add("[Blue] Boardwalk");
 //		if (true) {
 //			System.out.println("You passed GO collect $200");
 //			// number 1 on board
 //		}
-//	}
+//	} 
 //
 //	private static void place2() throws IOException {
 //
