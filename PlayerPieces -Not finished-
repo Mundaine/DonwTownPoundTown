@@ -1,0 +1,29 @@
+import java.io.IOException;
+
+public class PlayerPieces {
+
+	public enum playerPieces {
+		Wheelbarrow, Battleship, Racecar, Thimble, Boot, ScottieDog, TopHat, Cat
+	}
+
+	public void playerPieceSelect() throws IOException {
+		System.out.println("The pieces are: " + java.util.Arrays.asList(playerPieces.values()));
+		namesPieces();
+		String userPiece = ConsoleUI.promptForInput("Select piece which player desires", false);
+		if (userPiece.equals("Battleship")) {
+			System.out.println("Player will now be " + playerPieces.Battleship);
+		}
+	}
+
+	public String[] namesPieces() {
+		playerPieces[] tokens = playerPieces.values();
+		String[] pieces = new String[tokens.length];
+
+		for (int i = 0; i < tokens.length; i++) {
+			pieces[i] = tokens[i].toString();
+		}
+
+		return pieces;
+	}
+
+}
