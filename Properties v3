@@ -1,0 +1,113 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Properties {
+
+	private static boolean userBuy;
+
+	ArrayList<PropertyCard> propertyLocations;
+
+	public void GO() throws IOException {
+		propertyLocations = new ArrayList<PropertyCard>();
+
+		propertyLocations.add(new PropertyCard(0, "[Purple] Mediterranean Avenue"));
+
+		propertyLocations.add(new PropertyCard(1, "[Purple] Baltic Avenue"));
+
+		propertyLocations.add(new PropertyCard(2, "Reading Railroad"));
+		propertyLocations.add(new PropertyCard(3, "[Cyan] Oriental Avenue"));
+
+		propertyLocations.add(new PropertyCard(4, "[Cyan] Vermont Avenue"));
+		propertyLocations.add(new PropertyCard(5, "[Cyan] Connecticut Avenue"));
+
+		propertyLocations.add(new PropertyCard(6, "[Pink] St. Charles Place"));
+		propertyLocations.add(new PropertyCard(7, "Electric Company"));
+		propertyLocations.add(new PropertyCard(8, "[Pink] States Avenue"));
+		propertyLocations.add(new PropertyCard(9, "[Pink] Virginia Avenue"));
+		propertyLocations.add(new PropertyCard(10, "Pennsylvania Railroad"));
+		propertyLocations.add(new PropertyCard(11, "[Orange] St. James Place"));
+
+		propertyLocations.add(new PropertyCard(12, "[Orange] Tennessee Avenue"));
+		propertyLocations.add(new PropertyCard(13, "[Orange] New York Avenue"));
+		propertyLocations.add(new PropertyCard(14, "Free Parking"));
+		propertyLocations.add(new PropertyCard(15, "[Red] Kentucky Avenue"));
+
+		propertyLocations.add(new PropertyCard(16, "[Red] Indiana Avenue"));
+		propertyLocations.add(new PropertyCard(17, "[Red] Illinois Avenue"));
+		propertyLocations.add(new PropertyCard(18, "B. & O. Railroad"));
+		propertyLocations.add(new PropertyCard(19, "[Yellow] Atlantic Avenue"));
+		propertyLocations.add(new PropertyCard(20, "[Yellow] Ventnor Avenue"));
+		propertyLocations.add(new PropertyCard(21, "Water Works"));
+		propertyLocations.add(new PropertyCard(22, "[Yellow] Marvin Gardens"));
+		propertyLocations.add(new PropertyCard(23, "Jail"));
+		propertyLocations.add(new PropertyCard(24, "[Green] Pacific Avenue"));
+		propertyLocations.add(new PropertyCard(25, "[Green] North Carolina"));
+
+		propertyLocations.add(new PropertyCard(26, "[Green] Pennsylvania Avenue"));
+		propertyLocations.add(new PropertyCard(27, "Short Line"));
+
+		propertyLocations.add(new PropertyCard(28, "[Blue] Park Place"));
+
+		propertyLocations.add(new PropertyCard(29, "[Blue] Boardwalk"));
+
+		/* KEEP THIS, it's necessary to work, it doesn't do anything yet. remove lines are useful to just copy paste them
+		wherever they are needed. userBuy is the boolean variable that will be used through consoleUI to determine 
+		if a player will buy a property or not. Bank can then be called to add or remove money from the player. Thinking
+		on creating an arrayList for each player either here or in the main game method.
+		 * if (userBuy = true) {
+		 * 
+		 * propertyLocations.remove("[Purple] Mediterranean Avenue");
+		 * 
+		 * propertyLocations.remove("[Purple] Baltic Avenue");
+		 * 
+		 * propertyLocations.remove("Reading Railroad");
+		 * propertyLocations.remove("[Cyan] Oriental Avenue");
+		 * 
+		 * propertyLocations.remove("[Cyan] Vermont Avenue");
+		 * propertyLocations.remove("[Cyan] Connecticut Avenue");
+		 * 
+		 * propertyLocations.remove("[Pink] St. Charles Place");
+		 * propertyLocations.remove("Electric Company");
+		 * propertyLocations.remove("[Pink] States Avenue");
+		 * propertyLocations.remove("[Pink] Virginia Avenue");
+		 * propertyLocations.remove("Pennsylvania Railroad");
+		 * propertyLocations.remove("[Orange] St. James Place");
+		 * 
+		 * propertyLocations.remove("[Orange] Tennessee Avenue");
+		 * propertyLocations.remove("[Orange] New York Avenue");
+		 * 
+		 * propertyLocations.remove("[Red] Kentucky Avenue");
+		 * 
+		 * propertyLocations.remove("[Red] Indiana Avenue");
+		 * propertyLocations.remove("[Red] Illinois Avenue");
+		 * propertyLocations.remove("B. & O. Railroad");
+		 * propertyLocations.remove("[Yellow] Atlantic Avenue");
+		 * propertyLocations.remove("[Yellow] Ventnor Avenue");
+		 * propertyLocations.remove("Water Works");
+		 * propertyLocations.remove("[Yellow] Marvin Gardens");
+		 * 
+		 * propertyLocations.remove("[Green] Pacific Avenue");
+		 * propertyLocations.remove("[Green] North Carolina");
+		 * 
+		 * propertyLocations.remove("[Green] Pennsylvania Avenue");
+		 * propertyLocations.remove("Short Line");
+		 * 
+		 * propertyLocations.remove("[Blue] Park Place");
+		 * 
+		 * propertyLocations.remove("[Blue] Boardwalk"); }
+			
+			 */
+	}
+
+	class PropertyCard {
+
+		public int type;
+		public String label;
+
+		public PropertyCard(int propertyType, String propertyName) {
+			type = propertyType;
+			label = propertyName;
+		}
+	}
+
+}
