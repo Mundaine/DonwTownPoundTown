@@ -11,11 +11,22 @@ public class Game {
 	private static int playerSixSpace = 1;
 	private static int playerSevenSpace = 1;
 	private static int playerEightSpace = 1;
-	// class level as it's utilized in playerTurnSwitch() and diceRoller()
+	// Class level as variables are utilized in playerTurnSwitch() and
+	// diceRoller()
+	// As name implies, these are beginning spaces for each possible player.
 
 	static GenerateBoard boardPrint = new GenerateBoard();
 	// class level because it is needed inside play() and playerOptionsOnTurn()
 
+	/*
+	 * This method allows for the game to run. Method manages each individual
+	 * class. For Players, asks how many are going to play, then uses that
+	 * variable to call for methods in player game to assign a name and a piece.
+	 * Calls Board class to print a visual representation of the board. Calls
+	 * the method bankctioneer. Creates a for loop that will run for each player
+	 * available, loop calls playerTurnSwitch() method.
+	 * 
+	 */
 	public void play() throws IOException {
 		System.out.println("Welcome to the Monopoly Application! \nYou're in for a world of fun!");
 
@@ -26,7 +37,7 @@ public class Game {
 		Player playerNameAndPiece = new Player();
 		for (int i = 0; i < numberOfPlayers; i++) {
 			playerNames[i] = playerNameAndPiece.player();
-			playerNameAndPiece.playerPieceSelect(numberOfPlayers);
+			playerPieces[i] = playerNameAndPiece.playerPieceSelect(numberOfPlayers);
 		}
 
 		System.out.println("\nThe visual representation of the board shall now be presented:");
@@ -34,25 +45,27 @@ public class Game {
 		GenerateBoard boardPrint = new GenerateBoard();
 		boardPrint.generateBoard();
 
-		theBankctioneer(numberOfPlayers);
+		int firstPlayer = playerMovementOrder(numberOfPlayers);
 
-		for (int countForPlayers = 1; countForPlayers <= numberOfPlayers; countForPlayers++) {
+		// theBankctioneer(numberOfPlayers);
+
+		for (int countForPlayers = firstPlayer; countForPlayers <= numberOfPlayers; countForPlayers++) {
 			if (countForPlayers == 1) {
-				playerTurnSwitch(playerNames[0], countForPlayers);
+				playerTurnSwitch(playerNames[0], countForPlayers, playerPieces[0]);
 			} else if (countForPlayers == 2) {
-				playerTurnSwitch(playerNames[1], countForPlayers);
+				playerTurnSwitch(playerNames[1], countForPlayers, playerPieces[1]);
 			} else if (countForPlayers == 3) {
-				playerTurnSwitch(playerNames[2], countForPlayers);
+				playerTurnSwitch(playerNames[2], countForPlayers, playerPieces[2]);
 			} else if (countForPlayers == 4) {
-				playerTurnSwitch(playerNames[3], countForPlayers);
+				playerTurnSwitch(playerNames[3], countForPlayers, playerPieces[3]);
 			} else if (countForPlayers == 5) {
-				playerTurnSwitch(playerNames[4], countForPlayers);
+				playerTurnSwitch(playerNames[4], countForPlayers, playerPieces[4]);
 			} else if (countForPlayers == 6) {
-				playerTurnSwitch(playerNames[5], countForPlayers);
+				playerTurnSwitch(playerNames[5], countForPlayers, playerPieces[5]);
 			} else if (countForPlayers == 7) {
-				playerTurnSwitch(playerNames[6], countForPlayers);
+				playerTurnSwitch(playerNames[6], countForPlayers, playerPieces[6]);
 			} else if (countForPlayers == 8) {
-				playerTurnSwitch(playerNames[7], countForPlayers);
+				playerTurnSwitch(playerNames[7], countForPlayers, playerPieces[7]);
 			}
 
 			if (countForPlayers == numberOfPlayers)
@@ -60,6 +73,12 @@ public class Game {
 		}
 	}
 
+	/*
+	 * Method bancktioneer establishes Monopoly rule that one player will be
+	 * assigned as banker and auctioneer. If there are more than 5 players,
+	 * selected player can choose to be either one of the two, or both.
+	 * 
+	 */
 	public static void theBankctioneer(int numberOfPlayers) throws IOException {
 		System.out.println(
 				"\nPlease select one of the players to be the Banker. \nPlease make certain to select an appropriate Banker who will also double as a good Auctioneer.");
@@ -110,10 +129,13 @@ public class Game {
 		}
 	}
 
-	public static void playerOptionsOnTurn(String playerName, int playerNumber) throws IOException {
+	/*
+	 * Method prints a menu of options to help each player keep track of various
+	 * things in-game.
+	 * 
+	 */
+	public static void playerOptionsOnTurn(String playerName, int playerNumber, String playerPiece) throws IOException {
 		System.out.println("\nA menu containing available, helpful options shall now be presented.\n");
-		System.out.println(
-				"If any player desires to check in which place they reside at, it will be stated shortly.\nPlease be patient");
 		System.out.println();
 		String[] optionsMenu = new String[6];
 		optionsMenu[0] = "Check Available Property";
@@ -136,20 +158,15 @@ public class Game {
 			} else if (userAns == 2) {
 				System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
 				System.out.println();
-				// the sum of the arrayList money for the player
+				// the money for the player
 			} else if (userAns == 3) {
 				System.out.println("The available cards player " + playerName + " has are:");
 				System.out.println();
 				// print arrayList of cards available, if arrayList.size()==0,
 				// print are there are no available cards for player
 			} else if (userAns == 4) {
-				System.out.println("The space that the player " + playerName + " currently resides is:");
-				System.out.println();
-				// player space
-			} else if (userAns == 5) {
 				System.out.println("The piece that player " + playerName + " is shall now be displayed:");
-				// ... I guess this will be sorted out through playerPieces
-				// return playerPieceX
+				System.out.println("Player is piece: " + playerPiece);
 			} else if (userAns == 5) {
 				boardPrint.generateBoard();
 			} else if (userAns == 6) {
@@ -177,52 +194,69 @@ public class Game {
 		}
 	}
 
-	public static void playerTurnSwitch(String playerName, int count) throws IOException {
+	/*
+	 * Method makes movement and playerOptionsOnTurn happen at the same time for
+	 * each player. The variable inside the parameter is taken from the play()
+	 * method to know which player's turn is.
+	 */
+	public static void playerTurnSwitch(String playerName, int count, String playerPiece) throws IOException {
+
+		for (int i = 0; i < count; i++) {
+		}
 
 		if (count == 1) {
 
 			System.out.println("It's player 1, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerOneSpace, count);
 
 		} else if (count == 2) {
 			System.out.println("It's player 2, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerTwoSpace, count);
 
 		} else if (count == 3) {
 			System.out.println("It's player 3, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerThreeSpace, count);
 
 		} else if (count == 4) {
 			System.out.println("It's player 4, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerFourSpace, count);
 
 		} else if (count == 5) {
 			System.out.println("It's player 5, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerFiveSpace, count);
 
 		} else if (count == 6) {
 			System.out.println("It's player 6, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerSixSpace, count);
 
 		} else if (count == 7) {
 			System.out.println("It's player 7, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerSevenSpace, count);
 
 		} else if (count == 8) {
 			System.out.println("It's player 8, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName, count);
+			playerOptionsOnTurn(playerName, count, playerPiece);
 			playerMovement(playerName, playerEightSpace, count);
 		}
 
 	}
 
+	static Random rd = new Random();
+
+	/*
+	 * Random used class wise as it's required in two methods. Method makes
+	 * player movement possible through the use of two random integers
+	 * generators from 1 to 6 to simulate dice. Sum of both dice is added to a
+	 * variable that keeps track of each player's space in the board.
+	 * 
+	 */
 	public static void playerMovement(String playerName, int playerMove, int whichPlayer) {
 		System.out.println("Player " + playerName + " is currently at space " + playerMove + ".");
 		Random rd = new Random();
@@ -261,11 +295,56 @@ public class Game {
 		System.out.println("Player " + playerName + " is now at space " + playerMove + ".");
 	}
 
-	public void playerSpaceLocation(int playerSpace) {
+	/*
+	 * Method created in order to have the first player to start moving
+	 * randomly.\ selected. Simulates the purpose of having players roll the
+	 * dice to see who shall be the highest number to select that player to
+	 * start the game.
+	 * 
+	 */
+	public int playerMovementOrder(int playerNum) {
+		int firstPlayer = rd.nextInt(playerNum) + 1;
+		System.out.println("First player to start moving will be player: " + firstPlayer);
+		return firstPlayer;
+	}
 
-		if (playerSpace == 26) {
+	/*
+	 * This method calls for both the community and chance cards. Then, it does
+	 * what the community or chance card states.
+	 */
+	public void playerSpaceLocation(int playerSpace) {
+		Chance chanceCard = new Chance();
+		CommunityChest communityCard = new CommunityChest();
+		if (playerSpace == 23) {
 			System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
-			// get a chance card for the player
+
+		}
+
+		if (playerSpace == 8) {
+			System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+			chanceCard.getCard();
+		}
+
+		if (playerSpace == 37) {
+			System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+			chanceCard.getCard();
+		}
+
+		if (playerSpace == 34) {
+			System.out.println(
+					"\nYou have landed on community chest space! You will now be handed a community chest card ");
+			communityCard.getChest();
+		}
+
+		if (playerSpace == 18) {
+			System.out.println(
+					"\nYou have landed on community chest space! You will now be handed a community chest card ");
+			chanceCard.getCard();
+		}
+		if (playerSpace == 3) {
+			System.out.println(
+					"\nYou have landed on community chest space! You will now be handed a community chest card ");
+			chanceCard.getCard();
 		}
 
 	}
