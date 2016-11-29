@@ -1,0 +1,53 @@
+import java.io.IOException;
+
+public class Player {
+	// Method allows to select a name each time it's called.
+	// Number of times it's called handled in game.
+	public String player() throws IOException {
+		String player = ConsoleUI.promptForInput("Assign name for player", false);
+		return player;
+	}
+
+	public enum playerPieces {
+		Battleship, Boot, Cat, Racecar, ScottieDog, Thimble, TopHat, Wheelbarrow
+	}
+
+	playerPieces[] tokens = playerPieces.values();
+	// Class wide because it's necessary on both methods below. Required for
+	// converting enum values into string for pieces arrays.
+
+	public String playerPieceSelect(int playerNum) throws IOException {
+		System.out.println("The pieces are: " + java.util.Arrays.asList(playerPieces.values()));
+		System.out.println("\nPlayer, select piece: ");
+
+		int pieceSelection = ConsoleUI.promptForMenuSelection(namesPieces(), false);
+
+		String selectedPiece = "hi";
+		for (int i = 0; i < playerNum; i++) {
+			if (pieceSelection == i + 1) {
+				System.out.println("Player will now be " + tokens[i].toString());
+				selectedPiece = tokens[i].toString();
+
+			}
+		}
+		return selectedPiece;
+
+	}
+
+	/*
+	 * This method will iterate through every value in the enum of playerPieces.
+	 * This will make ConsoleUI.promptForMenu usable in the context of selecting
+	 * a piece. Returns the new String[] for Menu
+	 */
+	public String[] namesPieces() throws IOException {
+
+		String[] pieces = new String[tokens.length];
+
+		for (int i = 0; i < tokens.length; i++) {
+			pieces[i] = tokens[i].toString();
+		}
+
+		return pieces;
+	}
+
+}
