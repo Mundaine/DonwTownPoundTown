@@ -11,6 +11,7 @@ public class Game {
 	private static int playerSixSpace = 1;
 	private static int playerSevenSpace = 1;
 	private static int playerEightSpace = 1;
+	// class level as it's utilized in playerTurnSwitch() and diceRoller()
 
 	static GenerateBoard boardPrint = new GenerateBoard();
 	// class level because it is needed inside play() and playerOptionsOnTurn()
@@ -20,12 +21,13 @@ public class Game {
 
 		int numberOfPlayers = ConsoleUI.promptForInt("\nHow many players are going to play? 2-8", 2, 8);
 		String[] playerNames = new String[numberOfPlayers];
+		String[] playerPieces = new String[numberOfPlayers];
 
 		Player playerNameAndPiece = new Player();
 		for (int i = 0; i < numberOfPlayers; i++) {
 			playerNames[i] = playerNameAndPiece.player();
+			playerNameAndPiece.playerPieceSelect(numberOfPlayers);
 		}
-		playerNameAndPiece.pieceSelection();
 
 		System.out.println("\nThe visual representation of the board shall now be presented:");
 		System.out.println();
@@ -108,17 +110,18 @@ public class Game {
 		}
 	}
 
-	public static void playerOptionsOnTurn(String playerName) throws IOException {
+	public static void playerOptionsOnTurn(String playerName, int playerNumber) throws IOException {
 		System.out.println("\nA menu containing available, helpful options shall now be presented.\n");
 		System.out.println(
 				"If any player desires to check in which place they reside at, it will be stated shortly.\nPlease be patient");
 		System.out.println();
-		String[] optionsMenu = new String[5];
+		String[] optionsMenu = new String[6];
 		optionsMenu[0] = "Check Available Property";
-		optionsMenu[1] = "Check amount of money available";
-		optionsMenu[2] = "Check available cards";
-		optionsMenu[3] = "Check which piece player is";
-		optionsMenu[4] = "Check the visual representation of the board";
+		optionsMenu[1] = "Check Amount of Money Available";
+		optionsMenu[2] = "Check Available Cards";
+		optionsMenu[3] = "Check Which Piece Player Is";
+		optionsMenu[4] = "Check Visual Representation of Board";
+		optionsMenu[5] = "Check Player Location";
 
 		boolean repeatMenu = true;
 
@@ -130,30 +133,45 @@ public class Game {
 				System.out.println("Available property for player " + playerName + " is");
 				System.out.println();
 				// make unique arrayList for player's property, money, etc.
-			}
-			if (userAns == 2) {
+			} else if (userAns == 2) {
 				System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
 				System.out.println();
 				// the sum of the arrayList money for the player
-			}
-			if (userAns == 3) {
+			} else if (userAns == 3) {
 				System.out.println("The available cards player " + playerName + " has are:");
 				System.out.println();
 				// print arrayList of cards available, if arrayList.size()==0,
 				// print are there are no available cards for player
-			}
-			if (userAns == 4) {
+			} else if (userAns == 4) {
 				System.out.println("The space that the player " + playerName + " currently resides is:");
 				System.out.println();
 				// player space
-			}
-			if (userAns == 5) {
+			} else if (userAns == 5) {
 				System.out.println("The piece that player " + playerName + " is shall now be displayed:");
 				// ... I guess this will be sorted out through playerPieces
 				// return playerPieceX
-			}
-			if (userAns == 5) {
+			} else if (userAns == 5) {
 				boardPrint.generateBoard();
+			} else if (userAns == 6) {
+				int playerCheck = ConsoleUI.promptForInt(
+						"For which player number would you like to check the player's location?", 1, playerNumber);
+				if (playerCheck == 1) {
+					System.out.println("Player 1 is at: " + playerOneSpace);
+				} else if (playerCheck == 2) {
+					System.out.println("Player 2 is at: " + playerTwoSpace);
+				} else if (playerCheck == 3) {
+					System.out.println("Player 3 is at: " + playerThreeSpace);
+				} else if (playerCheck == 4) {
+					System.out.println("Player 4 is at: " + playerFourSpace);
+				} else if (playerCheck == 5) {
+					System.out.println("Player 5 is at: " + playerFiveSpace);
+				} else if (playerCheck == 6) {
+					System.out.println("Player 6 is at: " + playerSixSpace);
+				} else if (playerCheck == 7) {
+					System.out.println("Player 7 is at: " + playerSevenSpace);
+				} else if (playerCheck == 8) {
+					System.out.println("Player 8 is at: " + playerEightSpace);
+				}
 			}
 			repeatMenu = ConsoleUI.promptForBool("\nWould you like to see the menu again? Yes/No", "Yes", "No");
 		}
@@ -164,48 +182,48 @@ public class Game {
 		if (count == 1) {
 
 			System.out.println("It's player 1, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerOneSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerOneSpace, count);
 
 		} else if (count == 2) {
 			System.out.println("It's player 2, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerTwoSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerTwoSpace, count);
 
 		} else if (count == 3) {
 			System.out.println("It's player 3, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerThreeSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerThreeSpace, count);
 
 		} else if (count == 4) {
 			System.out.println("It's player 4, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerFourSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerFourSpace, count);
 
 		} else if (count == 5) {
 			System.out.println("It's player 5, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerFiveSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerFiveSpace, count);
 
 		} else if (count == 6) {
 			System.out.println("It's player 6, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerSixSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerSixSpace, count);
 
 		} else if (count == 7) {
 			System.out.println("It's player 7, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerSevenSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerSevenSpace, count);
 
 		} else if (count == 8) {
 			System.out.println("It's player 8, " + playerName + "'s turn");
-			playerOptionsOnTurn(playerName);
-			diceRoller(playerName, playerEightSpace, count);
+			playerOptionsOnTurn(playerName, count);
+			playerMovement(playerName, playerEightSpace, count);
 		}
 
 	}
 
-	public static void diceRoller(String playerName, int playerMove, int whichPlayer) {
+	public static void playerMovement(String playerName, int playerMove, int whichPlayer) {
 		System.out.println("Player " + playerName + " is currently at space " + playerMove + ".");
 		Random rd = new Random();
 		int dice1 = rd.nextInt(6) + 1;
@@ -252,23 +270,20 @@ public class Game {
 
 	}
 
+	public void playerBankruptcy() {
+	}
+
 	/*
 	 * 
 	 * properties cards chance / chest etc have rules properly implement7ed, can
 	 * add or modify in here call player have players get their pieces (through
-	 * player pieces) allow players to move have menu for players to move check
-	 * if the space of the player has options have menu for the options of the
-	 * place the player lands on i.e. buy, pay rent or tax, obtain a card,
-	 * upgrade property, do not print if there is nothing available allow other
-	 * player to move (if statement with a playerCount that will increase to
-	 * allow players to move after another player already moved) keep track of
-	 * money per player, where the player each, player property have options
-	 * menu at the beginning of every player movement: check money, check their
-	 * properties, view board, move, sell or utilize get out of jail card,
-	 * declare bankruptcy if player declares bankruptcy his properties get
-	 * auctioned (deal with mortgage) if player lands on property and doesn't
-	 * buy, property gets auctioned when choosing to auction, process can not
-	 * stop until process is finished
+	 * player pieces) * if the space of the player has options have menu for the
+	 * options of the place the player lands on i.e. buy, pay rent or tax,
+	 * obtain a card, upgrade property, do not print if there is nothing
+	 * property if player declares bankruptcy his properties get auctioned (deal
+	 * with mortgage) if player lands on property and doesn't buy, property gets
+	 * auctioned when choosing to auction, process can not stop until process is
+	 * finished
 	 * 
 	 * 
 	 * 
