@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
@@ -13,79 +12,63 @@ public class Game {
 	private static int playerSevenSpace = 1;
 	private static int playerEightSpace = 1;
 
-	// make rule book class to contain if statements and bankctioneer and shit
+	static GenerateBoard boardPrint = new GenerateBoard();
+	// class level because it is needed inside play() and playerOptionsOnTurn()
 
-	public static void main(String[] args) throws IOException {
+	public void play() throws IOException {
+		System.out.println("Welcome to the Monopoly Application! \nYou're in for a world of fun!");
 
-		Player playerNumbers = new Player();
-		int numberOfPlayers = playerNumbers.countPlayers();
+		int numberOfPlayers = ConsoleUI.promptForInt("\nHow many players are going to play? 2-8", 2, 8);
+		String[] playerNames = new String[numberOfPlayers];
 
-		Player players = new Player();
-		players.howManyWithName();
-
-		Player playersThemselves1 = new Player();
-		String player1 = playersThemselves1.player1();
-
-		Player playersThemselves2 = new Player();
-		String player2 = playersThemselves2.player2();
-
-		Player playersThemselves3 = new Player();
-		String player3 = playersThemselves3.player3();
-
-		Player playersThemselves4 = new Player();
-		String player4 = playersThemselves4.player4();
-
-		Player playersThemselves5 = new Player();
-		String player5 = playersThemselves5.player5();
-
-		Player playersThemselves6 = new Player();
-		String player6 = playersThemselves6.player6();
-
-		Player playersThemselves7 = new Player();
-		String player7 = playersThemselves7.player7();
-
-		Player playersThemselves8 = new Player();
-		String player8 = playersThemselves8.player8();
+		Player playerNameAndPiece = new Player();
+		for (int i = 0; i < numberOfPlayers; i++) {
+			playerNames[i] = playerNameAndPiece.player();
+		}
+		playerNameAndPiece.pieceSelection();
 
 		System.out.println("\nThe visual representation of the board shall now be presented:");
 		System.out.println();
 		GenerateBoard boardPrint = new GenerateBoard();
 		boardPrint.generateBoard();
+
 		theBankctioneer(numberOfPlayers);
-		for (int count = 1; count < numberOfPlayers; count++) {
-			if (count == 1) {
-				playerTurnSwitch(player1, count);
-			} else if (count == 2) {
-				playerTurnSwitch(player2, count);
-			} else if (count == 3) {
-				playerTurnSwitch(player3, count);
-			} else if (count == 4) {
-				playerTurnSwitch(player4, count);
-			} else if (count == 5) {
-				playerTurnSwitch(player5, count);
-			} else if (count == 6) {
-				playerTurnSwitch(player6, count);
-			} else if (count == 7) {
-				playerTurnSwitch(player7, count);
-			} else if (count == 8) {
-				playerTurnSwitch(player8, count);
+
+		for (int countForPlayers = 1; countForPlayers <= numberOfPlayers; countForPlayers++) {
+			if (countForPlayers == 1) {
+				playerTurnSwitch(playerNames[0], countForPlayers);
+			} else if (countForPlayers == 2) {
+				playerTurnSwitch(playerNames[1], countForPlayers);
+			} else if (countForPlayers == 3) {
+				playerTurnSwitch(playerNames[2], countForPlayers);
+			} else if (countForPlayers == 4) {
+				playerTurnSwitch(playerNames[3], countForPlayers);
+			} else if (countForPlayers == 5) {
+				playerTurnSwitch(playerNames[4], countForPlayers);
+			} else if (countForPlayers == 6) {
+				playerTurnSwitch(playerNames[5], countForPlayers);
+			} else if (countForPlayers == 7) {
+				playerTurnSwitch(playerNames[6], countForPlayers);
+			} else if (countForPlayers == 8) {
+				playerTurnSwitch(playerNames[7], countForPlayers);
 			}
-			count++;
-			if (count == numberOfPlayers)
-				count = 1;
+
+			if (countForPlayers == numberOfPlayers)
+				countForPlayers = 0;
 		}
 	}
 
 	public static void theBankctioneer(int numberOfPlayers) throws IOException {
 		System.out.println(
-				"Please select one of the players to be the banker, good Banker who will also make a good Auctioneer.");
-		int banker = ConsoleUI.promptForInt("Select the player number to be the Banker / Auctioneer.", 1,
-				numberOfPlayers);
+				"\nPlease select one of the players to be the Banker. \nPlease make certain to select an appropriate Banker who will also double as a good Auctioneer.");
+		int banker = ConsoleUI.promptForInt("Select the number of the Player to be both the Banker and the Auctioneer.",
+				1, numberOfPlayers);
 		// print out the name and piece of the player
-		System.out.println("Player " + banker + " will be the Banker.");
+		String bankAndAuction = "\nPlayer " + banker + " will be both the Banker and the Auctioneer.";
+		System.out.println(bankAndAuction);
 		int auctioneer = 0;
 		boolean auctionerEqualBanker = false;
-		String bankAndAuction = "Player " + banker + " will be both the Banker and the Auctioneer.";
+
 		if (numberOfPlayers > 5) {
 
 			boolean bankAuction = ConsoleUI.promptForBool(
@@ -126,40 +109,53 @@ public class Game {
 	}
 
 	public static void playerOptionsOnTurn(String playerName) throws IOException {
-		System.out.println("A menu containing available, helpful options shall now be presented.");
+		System.out.println("\nA menu containing available, helpful options shall now be presented.\n");
+		System.out.println(
+				"If any player desires to check in which place they reside at, it will be stated shortly.\nPlease be patient");
+		System.out.println();
 		String[] optionsMenu = new String[5];
 		optionsMenu[0] = "Check Available Property";
 		optionsMenu[1] = "Check amount of money available";
 		optionsMenu[2] = "Check available cards";
-		optionsMenu[3] = "Check at which space player currently resides";
-		optionsMenu[4] = "Check which piece player is";
+		optionsMenu[3] = "Check which piece player is";
+		optionsMenu[4] = "Check the visual representation of the board";
 
-		int userAns = ConsoleUI.promptForMenuSelection(optionsMenu, true);
-		if (userAns == 1) {
-			System.out.println("Available property for player " + playerName + " is");
-			System.out.println();
-			// make unique arrayList for player's property, money, etc.
-		}
-		if (userAns == 2) {
-			System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
-			System.out.println();
-			// the sum of the arrayList money for the player
-		}
-		if (userAns == 3) {
-			System.out.println("The available cards player " + playerName + " has are:");
-			System.out.println();
-			// print arrayList of cards available, if arrayList.size()==0,
-			// print are there are no available cards for player
-		}
-		if (userAns == 4) {
-			System.out.println("The space that the player " + playerName + " currently resides is:");
-			System.out.println();
-			// player space
-		}
-		if (userAns == 5) {
-			System.out.println("The piece that player " + playerName + " is shall now be displayed:");
-			// ... I guess this will be sorted out through playerPieces
-			// return playerPieceX
+		boolean repeatMenu = true;
+
+		while (repeatMenu) {
+
+			int userAns = ConsoleUI.promptForMenuSelection(optionsMenu, true);
+
+			if (userAns == 1) {
+				System.out.println("Available property for player " + playerName + " is");
+				System.out.println();
+				// make unique arrayList for player's property, money, etc.
+			}
+			if (userAns == 2) {
+				System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
+				System.out.println();
+				// the sum of the arrayList money for the player
+			}
+			if (userAns == 3) {
+				System.out.println("The available cards player " + playerName + " has are:");
+				System.out.println();
+				// print arrayList of cards available, if arrayList.size()==0,
+				// print are there are no available cards for player
+			}
+			if (userAns == 4) {
+				System.out.println("The space that the player " + playerName + " currently resides is:");
+				System.out.println();
+				// player space
+			}
+			if (userAns == 5) {
+				System.out.println("The piece that player " + playerName + " is shall now be displayed:");
+				// ... I guess this will be sorted out through playerPieces
+				// return playerPieceX
+			}
+			if (userAns == 5) {
+				boardPrint.generateBoard();
+			}
+			repeatMenu = ConsoleUI.promptForBool("\nWould you like to see the menu again? Yes/No", "Yes", "No");
 		}
 	}
 
@@ -167,42 +163,42 @@ public class Game {
 
 		if (count == 1) {
 
-			System.out.println("It's player 1's " + playerName + " turn");
+			System.out.println("It's player 1, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerOneSpace, count);
 
 		} else if (count == 2) {
-			System.out.println("It's player 2's " + playerName + " turn");
+			System.out.println("It's player 2, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerTwoSpace, count);
 
 		} else if (count == 3) {
-			System.out.println("It's player 3's " + playerName + " turn");
+			System.out.println("It's player 3, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerThreeSpace, count);
 
 		} else if (count == 4) {
-			System.out.println("It's player 4's " + playerName + " turn");
+			System.out.println("It's player 4, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerFourSpace, count);
 
 		} else if (count == 5) {
-			System.out.println("It's player 5's " + playerName + " turn");
+			System.out.println("It's player 5, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerFiveSpace, count);
 
 		} else if (count == 6) {
-			System.out.println("It's player 6's " + playerName + " turn");
+			System.out.println("It's player 6, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerSixSpace, count);
 
 		} else if (count == 7) {
-			System.out.println("It's player 7's " + playerName + " turn");
+			System.out.println("It's player 7, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerSevenSpace, count);
 
 		} else if (count == 8) {
-			System.out.println("It's player 8's " + playerName + " turn");
+			System.out.println("It's player 8, " + playerName + "'s turn");
 			playerOptionsOnTurn(playerName);
 			diceRoller(playerName, playerEightSpace, count);
 		}
@@ -245,7 +241,6 @@ public class Game {
 		}
 
 		System.out.println("Player " + playerName + " is now at space " + playerMove + ".");
-
 	}
 
 	public void playerSpaceLocation(int playerSpace) {
