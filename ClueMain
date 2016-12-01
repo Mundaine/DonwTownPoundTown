@@ -1,0 +1,729 @@
+package edu.neumont.csc110.a.monopoly;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+import edu.neumont.csc110.a.monopoly.Chance.ChanceCard;
+import edu.neumont.csc110.a.monopoly.CommunityChest.ChestCard;
+import edu.neumont.csc110.a.monopoly.Player.playerPieces;
+import edu.neumont.csc110.a.monopoly.Properties.PropertyCard;
+
+public class ClueMain {
+
+	public static void main(String[] args) {
+		private static boolean userBuy;
+
+		ArrayList<PropertyCard> propertyLocations;
+
+		public void GO() throws IOException {
+			propertyLocations = new ArrayList<PropertyCard>();
+
+			propertyLocations.add(new PropertyCard(0, "[Purple] Mediterranean Avenue"));
+
+			propertyLocations.add(new PropertyCard(1, "[Purple] Baltic Avenue"));
+
+			propertyLocations.add(new PropertyCard(2, "Reading Railroad"));
+			propertyLocations.add(new PropertyCard(3, "[Cyan] Oriental Avenue"));
+
+			propertyLocations.add(new PropertyCard(4, "[Cyan] Vermont Avenue"));
+			propertyLocations.add(new PropertyCard(5, "[Cyan] Connecticut Avenue"));
+
+			propertyLocations.add(new PropertyCard(6, "[Pink] St. Charles Place"));
+			propertyLocations.add(new PropertyCard(7, "Electric Company"));
+			propertyLocations.add(new PropertyCard(8, "[Pink] States Avenue"));
+			propertyLocations.add(new PropertyCard(9, "[Pink] Virginia Avenue"));
+			propertyLocations.add(new PropertyCard(10, "Pennsylvania Railroad"));
+			propertyLocations.add(new PropertyCard(11, "[Orange] St. James Place"));
+
+			propertyLocations.add(new PropertyCard(12, "[Orange] Tennessee Avenue"));
+			propertyLocations.add(new PropertyCard(13, "[Orange] New York Avenue"));
+			propertyLocations.add(new PropertyCard(14, "Free Parking"));
+			propertyLocations.add(new PropertyCard(15, "[Red] Kentucky Avenue"));
+
+			propertyLocations.add(new PropertyCard(16, "[Red] Indiana Avenue"));
+			propertyLocations.add(new PropertyCard(17, "[Red] Illinois Avenue"));
+			propertyLocations.add(new PropertyCard(18, "B. & O. Railroad"));
+			propertyLocations.add(new PropertyCard(19, "[Yellow] Atlantic Avenue"));
+			propertyLocations.add(new PropertyCard(20, "[Yellow] Ventnor Avenue"));
+			propertyLocations.add(new PropertyCard(21, "Water Works"));
+			propertyLocations.add(new PropertyCard(22, "[Yellow] Marvin Gardens"));
+			propertyLocations.add(new PropertyCard(23, "Jail"));
+			propertyLocations.add(new PropertyCard(24, "[Green] Pacific Avenue"));
+			propertyLocations.add(new PropertyCard(25, "[Green] North Carolina"));
+
+			propertyLocations.add(new PropertyCard(26, "[Green] Pennsylvania Avenue"));
+			propertyLocations.add(new PropertyCard(27, "Short Line"));
+
+			propertyLocations.add(new PropertyCard(28, "[Blue] Park Place"));
+
+			propertyLocations.add(new PropertyCard(29, "[Blue] Boardwalk"));
+
+			/* KEEP THIS, it's necessary to work, it doesn't do anything yet. remove lines are useful to just copy paste them
+			wherever they are needed. userBuy is the boolean variable that will be used through consoleUI to determine 
+			if a player will buy a property or not. Bank can then be called to add or remove money from the player. Thinking
+			on creating an arrayList for each player either here or in the main game method.
+			 * if (userBuy = true) {
+			 * 
+			 * propertyLocations.remove("[Purple] Mediterranean Avenue");
+			 * 
+			 * propertyLocations.remove("[Purple] Baltic Avenue");
+			 * 
+			 * propertyLocations.remove("Reading Railroad");
+			 * propertyLocations.remove("[Cyan] Oriental Avenue");
+			 * 
+			 * propertyLocations.remove("[Cyan] Vermont Avenue");
+			 * propertyLocations.remove("[Cyan] Connecticut Avenue");
+			 * 
+			 * propertyLocations.remove("[Pink] St. Charles Place");
+			 * propertyLocations.remove("Electric Company");
+			 * propertyLocations.remove("[Pink] States Avenue");
+			 * propertyLocations.remove("[Pink] Virginia Avenue");
+			 * propertyLocations.remove("Pennsylvania Railroad");
+			 * propertyLocations.remove("[Orange] St. James Place");
+			 * 
+			 * propertyLocations.remove("[Orange] Tennessee Avenue");
+			 * propertyLocations.remove("[Orange] New York Avenue");
+			 * 
+			 * propertyLocations.remove("[Red] Kentucky Avenue");
+			 * 
+			 * propertyLocations.remove("[Red] Indiana Avenue");
+			 * propertyLocations.remove("[Red] Illinois Avenue");
+			 * propertyLocations.remove("B. & O. Railroad");
+			 * propertyLocations.remove("[Yellow] Atlantic Avenue");
+			 * propertyLocations.remove("[Yellow] Ventnor Avenue");
+			 * propertyLocations.remove("Water Works");
+			 * propertyLocations.remove("[Yellow] Marvin Gardens");
+			 * 
+			 * propertyLocations.remove("[Green] Pacific Avenue");
+			 * propertyLocations.remove("[Green] North Carolina");
+			 * 
+			 * propertyLocations.remove("[Green] Pennsylvania Avenue");
+			 * propertyLocations.remove("Short Line");
+			 * 
+			 * propertyLocations.remove("[Blue] Park Place");
+			 * 
+			 * propertyLocations.remove("[Blue] Boardwalk"); }
+				
+				 */
+		}
+
+		class PropertyCard {
+
+			public int type;
+			public String label;
+
+			public PropertyCard(int propertyType, String propertyName) {
+				type = propertyType;
+				label = propertyName;
+			}
+		}
+
+	}
+}
+// Method allows to select a name each time it's called.
+// Number of times it's called handled in game.
+public String player() throws IOException {
+	String player = ConsoleUI.promptForInput("Assign name for player", false);
+	return player;
+}
+
+public enum playerPieces {
+	Battleship, Boot, Cat, Racecar, ScottieDog, Thimble, TopHat, Wheelbarrow
+}
+
+playerPieces[] tokens = playerPieces.values();
+// Class wide because it's necessary on both methods below. Required for
+// converting enum values into string for pieces arrays.
+
+public String playerPieceSelect(int playerNum) throws IOException {
+	System.out.println("The pieces are: " + java.util.Arrays.asList(playerPieces.values()));
+	System.out.println("\nPlayer, select piece: ");
+
+	int pieceSelection = ConsoleUI.promptForMenuSelection(namesPieces(), false);
+
+	String selectedPiece = "hi";
+	for (int i = 0; i < playerNum; i++) {
+		if (pieceSelection == i + 1) {
+			System.out.println("Player will now be " + tokens[i].toString());
+			selectedPiece = tokens[i].toString();
+
+		}
+	}
+	return selectedPiece;
+
+}
+
+/*
+ * This method will iterate through every value in the enum of playerPieces.
+ * This will make ConsoleUI.promptForMenu usable in the context of selecting
+ * a piece. Returns the new String[] for Menu
+ */
+public String[] namesPieces() throws IOException {
+
+	String[] pieces = new String[tokens.length];
+
+	for (int i = 0; i < tokens.length; i++) {
+		pieces[i] = tokens[i].toString();
+	}
+
+	return pieces;
+}
+public static void main(String[] args) throws IOException {
+	Game game = new Game();
+	game.play();
+
+}
+
+} 
+
+
+private static int playerOneSpace = 1;
+private static int playerTwoSpace = 1;
+private static int playerThreeSpace = 1;
+private static int playerFourSpace = 1;
+private static int playerFiveSpace = 1;
+private static int playerSixSpace = 1;
+private static int playerSevenSpace = 1;
+private static int playerEightSpace = 1;
+// Class level as variables are utilized in playerTurnSwitch() and
+// diceRoller()
+// As name implies, these are beginning spaces for each possible player.
+
+static GenerateBoard boardPrint = new GenerateBoard();
+// class level because it is needed inside play() and playerOptionsOnTurn()
+
+/*
+ * This method allows for the game to run. Method manages each individual
+ * class. For Players, asks how many are going to play, then uses that
+ * variable to call for methods in player game to assign a name and a piece.
+ * Calls Board class to print a visual representation of the board. Calls
+ * the method bankctioneer. Creates a for loop that will run for each player
+ * available, loop calls playerTurnSwitch() method.
+ * 
+ */
+public void play() throws IOException {
+	System.out.println("Welcome to the Monopoly Application! \nYou're in for a world of fun!");
+
+	int numberOfPlayers = ConsoleUI.promptForInt("\nHow many players are going to play? 2-8", 2, 8);
+	String[] playerNames = new String[numberOfPlayers];
+	String[] playerPieces = new String[numberOfPlayers];
+
+	Player playerNameAndPiece = new Player();
+	for (int i = 0; i < numberOfPlayers; i++) {
+		playerNames[i] = playerNameAndPiece.player();
+		playerPieces[i] = playerNameAndPiece.playerPieceSelect(numberOfPlayers);
+	}
+
+	System.out.println("\nThe visual representation of the board shall now be presented:");
+	System.out.println();
+	//GenerateBoard boardPrint = new GenerateBoard();
+	//boardPrint.GenerateBoard();
+
+	int firstPlayer = playerMovementOrder(numberOfPlayers);
+
+	// theBankctioneer(numberOfPlayers);
+
+	for (int countForPlayers = firstPlayer; countForPlayers <= numberOfPlayers; countForPlayers++) {
+		if (countForPlayers == 1) {
+			playerTurnSwitch(playerNames[0], countForPlayers, playerPieces[0]);
+		} else if (countForPlayers == 2) {
+			playerTurnSwitch(playerNames[1], countForPlayers, playerPieces[1]);
+		} else if (countForPlayers == 3) {
+			playerTurnSwitch(playerNames[2], countForPlayers, playerPieces[2]);
+		} else if (countForPlayers == 4) {
+			playerTurnSwitch(playerNames[3], countForPlayers, playerPieces[3]);
+		} else if (countForPlayers == 5) {
+			playerTurnSwitch(playerNames[4], countForPlayers, playerPieces[4]);
+		} else if (countForPlayers == 6) {
+			playerTurnSwitch(playerNames[5], countForPlayers, playerPieces[5]);
+		} else if (countForPlayers == 7) {
+			playerTurnSwitch(playerNames[6], countForPlayers, playerPieces[6]);
+		} else if (countForPlayers == 8) {
+			playerTurnSwitch(playerNames[7], countForPlayers, playerPieces[7]);
+		}
+
+		if (countForPlayers == numberOfPlayers)
+			countForPlayers = 0;
+	}
+}
+
+/*
+ * Method bancktioneer establishes Monopoly rule that one player will be
+ * assigned as banker and auctioneer. If there are more than 5 players,
+ * selected player can choose to be either one of the two, or both.
+ * 
+ */
+public static void theBankctioneer(int numberOfPlayers) throws IOException {
+	System.out.println(
+			"\nPlease select one of the players to be the Banker. \nPlease make certain to select an appropriate Banker who will also double as a good Auctioneer.");
+	int banker = ConsoleUI.promptForInt("Select the number of the Player to be both the Banker and the Auctioneer.",
+			1, numberOfPlayers);
+	// print out the name and piece of the player
+	String bankAndAuction = "\nPlayer " + banker + " will be both the Banker and the Auctioneer.";
+	System.out.println(bankAndAuction);
+	int auctioneer = 0;
+	boolean auctionerEqualBanker = false;
+
+	if (numberOfPlayers > 5) {
+
+		boolean bankAuction = ConsoleUI.promptForBool(
+				"There are more than 5 players, does the selected Banker want to act as Banker and Auctioner? Y/N",
+				"Y", "N");
+
+		if (bankAuction == true)
+			System.out.println(bankAndAuction);
+
+		else if (bankAuction == false) {
+
+			auctioneer = ConsoleUI.promptForInt("Enter the number of the player who shall be the Auctioneer", 1,
+					numberOfPlayers);
+			while (auctionerEqualBanker != true) {
+
+				if (auctioneer == banker) {
+					System.out.println(
+							"It has been previously stated that the Banker and the Auctioneer would be different players");
+
+					auctionerEqualBanker = ConsoleUI.promptForBool(
+							"Would you like to make the Auctioneer and the Banker the same person? Y/N", "Y", "N");
+
+					if (auctionerEqualBanker != true) {
+						auctioneer = ConsoleUI.promptForInt(
+								"Enter the number of the player who shall be the Auctioneer", 1, numberOfPlayers);
+					} else if (auctionerEqualBanker) {
+						System.out.println(bankAndAuction);
+					}
+				}
+				if (auctioneer != banker) {
+					auctionerEqualBanker = true;
+					System.out.println("Player " + auctioneer + " will be the Auctioneer.");
+				}
+
+			}
+		}
+	}
+}
+
+/*
+ * Method prints a menu of options to help each player keep track of various
+ * things in-game.
+ * 
+ */
+public static void playerOptionsOnTurn(String playerName, int playerNumber, String playerPiece) throws IOException {
+	System.out.println("\nA menu containing available, helpful options shall now be presented.\n");
+	System.out.println();
+	String[] optionsMenu = new String[6];
+	optionsMenu[0] = "Check Available Property";
+	optionsMenu[1] = "Check Amount of Money Available";
+	optionsMenu[2] = "Check Available Cards";
+	optionsMenu[3] = "Check Which Piece Player Is";
+	optionsMenu[4] = "Check Visual Representation of Board";
+	optionsMenu[5] = "Check Player Location";
+
+	boolean repeatMenu = true;
+
+	while (repeatMenu) {
+
+		int userAns = ConsoleUI.promptForMenuSelection(optionsMenu, true);
+
+		if (userAns == 1) {
+			System.out.println("Available property for player " + playerName + " is");
+			System.out.println();
+			// make unique arrayList for player's property, money, etc.
+		} else if (userAns == 2) {
+			System.out.println("Amount of money currently available by player " + playerName + " is a total of:");
+			System.out.println();
+			// the money for the player
+		} else if (userAns == 3) {
+			System.out.println("The available cards player " + playerName + " has are:");
+			System.out.println();
+			// print arrayList of cards available, if arrayList.size()==0,
+			// print are there are no available cards for player
+		} else if (userAns == 4) {
+			System.out.println("The piece that player " + playerName + " is shall now be displayed:");
+			System.out.println("Player is piece: " + playerPiece);
+		} else if (userAns == 5) {
+			//boardPrint.generateBoard();
+		} else if (userAns == 6) {
+			int playerCheck = ConsoleUI.promptForInt(
+					"For which player number would you like to check the player's location?", 1, playerNumber);
+			if (playerCheck == 1) {
+				System.out.println("Player 1 is at: " + playerOneSpace);
+			} else if (playerCheck == 2) {
+				System.out.println("Player 2 is at: " + playerTwoSpace);
+			} else if (playerCheck == 3) {
+				System.out.println("Player 3 is at: " + playerThreeSpace);
+			} else if (playerCheck == 4) {
+				System.out.println("Player 4 is at: " + playerFourSpace);
+			} else if (playerCheck == 5) {
+				System.out.println("Player 5 is at: " + playerFiveSpace);
+			} else if (playerCheck == 6) {
+				System.out.println("Player 6 is at: " + playerSixSpace);
+			} else if (playerCheck == 7) {
+				System.out.println("Player 7 is at: " + playerSevenSpace);
+			} else if (playerCheck == 8) {
+				System.out.println("Player 8 is at: " + playerEightSpace);
+			}
+		}
+		repeatMenu = ConsoleUI.promptForBool("\nWould you like to see the menu again? Yes/No", "Yes", "No");
+	}
+}
+
+/*
+ * Method makes movement and playerOptionsOnTurn happen at the same time for
+ * each player. The variable inside the parameter is taken from the play()
+ * method to know which player's turn is.
+ */
+public static void playerTurnSwitch(String playerName, int count, String playerPiece) throws IOException {
+
+	for (int i = 0; i < count; i++) {
+	}
+
+	if (count == 1) {
+
+		System.out.println("It's player 1, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerOneSpace, count);
+
+	} else if (count == 2) {
+		System.out.println("It's player 2, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerTwoSpace, count);
+
+	} else if (count == 3) {
+		System.out.println("It's player 3, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerThreeSpace, count);
+
+	} else if (count == 4) {
+		System.out.println("It's player 4, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerFourSpace, count);
+
+	} else if (count == 5) {
+		System.out.println("It's player 5, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerFiveSpace, count);
+
+	} else if (count == 6) {
+		System.out.println("It's player 6, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerSixSpace, count);
+
+	} else if (count == 7) {
+		System.out.println("It's player 7, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerSevenSpace, count);
+
+	} else if (count == 8) {
+		System.out.println("It's player 8, " + playerName + "'s turn");
+		playerOptionsOnTurn(playerName, count, playerPiece);
+		playerMovement(playerName, playerEightSpace, count);
+	}
+
+}
+
+static Random rd = new Random();
+
+/*
+ * Random used class wise as it's required in two methods. Method makes
+ * player movement possible through the use of two random integers
+ * generators from 1 to 6 to simulate dice. Sum of both dice is added to a
+ * variable that keeps track of each player's space in the board.
+ * 
+ */
+public static void playerMovement(String playerName, int playerMove, int whichPlayer) {
+	System.out.println("Player " + playerName + " is currently at space " + playerMove + ".");
+	Random rd = new Random();
+	int dice1 = rd.nextInt(6) + 1;
+	int dice2 = rd.nextInt(6) + 1;
+	int totalMovementSpace = dice1 + dice2;
+
+	System.out.println("Dice one: " + dice1 + "\nDice two: " + dice2);
+	System.out.println("The player will move a total of " + totalMovementSpace + " spaces.");
+
+	while (totalMovementSpace > 0) {
+		if (playerMove == 41) {
+			playerMove = 1;
+		}
+		playerMove += 1;
+		totalMovementSpace--;
+	}
+	if (whichPlayer == 1) {
+		playerOneSpace = playerMove;
+	} else if (whichPlayer == 2) {
+		playerTwoSpace = playerMove;
+	} else if (whichPlayer == 3) {
+		playerThreeSpace = playerMove;
+	} else if (whichPlayer == 4) {
+		playerFourSpace = playerMove;
+	} else if (whichPlayer == 5) {
+		playerFiveSpace = playerMove;
+	} else if (whichPlayer == 6) {
+		playerSixSpace = playerMove;
+	} else if (whichPlayer == 7) {
+		playerSevenSpace = playerMove;
+	} else if (whichPlayer == 8) {
+		playerEightSpace = playerMove;
+	}
+
+	System.out.println("Player " + playerName + " is now at space " + playerMove + ".");
+}
+
+/*
+ * Method created in order to have the first player to start moving
+ * randomly.\ selected. Simulates the purpose of having players roll the
+ * dice to see who shall be the highest number to select that player to
+ * start the game.
+ * 
+ */
+public int playerMovementOrder(int playerNum) {
+	int firstPlayer = rd.nextInt(playerNum) + 1;
+	System.out.println("First player to start moving will be player: " + firstPlayer);
+	return firstPlayer;
+}
+
+/*
+ * This method calls for both the community and chance cards. Then, it does
+ * what the community or chance card states.
+ */
+public void playerSpaceLocation(int playerSpace) {
+	Chance chanceCard = new Chance();
+	CommunityChest communityCard = new CommunityChest();
+	if (playerSpace == 23) {
+		System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+
+	}
+
+	if (playerSpace == 8) {
+		System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+		chanceCard.getCard();
+	}
+
+	if (playerSpace == 37) {
+		System.out.println("\nYou have landed on a chance card space! You will now be handed a chance card ");
+		chanceCard.getCard();
+	}
+
+	if (playerSpace == 34) {
+		System.out.println(
+				"\nYou have landed on community chest space! You will now be handed a community chest card ");
+		communityCard.getChest();
+	}
+
+	if (playerSpace == 18) {
+		System.out.println(
+				"\nYou have landed on community chest space! You will now be handed a community chest card ");
+		chanceCard.getCard();
+	}
+	if (playerSpace == 3) {
+		System.out.println(
+				"\nYou have landed on community chest space! You will now be handed a community chest card ");
+		chanceCard.getCard();
+	}
+
+}
+
+public void playerBankruptcy() {
+}
+
+/*
+ * 
+ * properties cards chance / chest etc have rules properly implement7ed, can
+ * add or modify in here call player have players get their pieces (through
+ * player pieces) * if the space of the player has options have menu for the
+ * options of the place the player lands on i.e. buy, pay rent or tax,
+ * obtain a card, upgrade property, do not print if there is nothing
+ * property if player declares bankruptcy his properties get auctioned (deal
+ * with mortgage) if player lands on property and doesn't buy, property gets
+ * auctioned when choosing to auction, process can not stop until process is
+ * finished
+ * 
+ * 
+ * 
+ * end game if all but one player declares bankruptcy
+ */
+
+}
+
+final int playerInitialMoney = 1500;
+int playerMoney = 0;
+
+
+public int player() {
+playerMoney = playerInitialMoney;
+return playerMoney;
+}
+
+}
+//Creates a 2d array for the board
+String [][] board = new String[11][11];{
+
+	
+	for(int i = 0;i<board.length;i++){
+		for(int j = 0;j<board.length;j++){
+			board[i][j] =" ";
+		}
+	}
+	
+	board[10][10] = " 1";
+	board[10][9] = " 2 ";
+	board[10][8] = " 3 ";
+	board[10][7] = " 4 ";
+	board[10][6] = " 5 ";
+	board[10][5] = " 6 ";
+	board[10][4] = " 7 ";
+	board[10][3] = " 8 ";
+	board[10][2] = " 9 ";
+	board[10][1] = "10 ";
+	board[10][0] = "11 ";
+	board[9][0] = "12";
+	board[8][0] = "13";
+	board[7][0] = "14";
+	board[6][0] = "15";
+	board[5][0] = "16";
+	board[4][0] = "17";
+	board[3][0] = "18";
+	board[2][0] = "19";
+	board[1][0] = "20";
+	board[0][0] = "21 ";
+	board[0][1] = "22 ";
+	board[0][2] = "23 ";
+	board[0][3] = "24 ";
+	board[0][4] = "25 ";
+	board[0][5] = "26 ";
+	board[0][6] = "27 ";
+	board[0][7] = "28 ";
+	board[0][8] = "29 ";
+	board[0][9] = "30 ";
+	board[0][10] = "31 ";
+	board[1][10] = "                   32";
+	board[2][10] = "         33";
+	board[3][10] = "                   34";
+	board[4][10] = "                   35";
+	board[5][10] = "                   36";
+	board[6][10] = "                   37";
+	board[7][10] = "          38";
+	board[8][10] = "                   39";
+	board[9][10] = "                   40";
+	board[2][6] = "     Chance";
+	board[7][6] = "     Chest";
+
+	for(int i = 0;i<board.length;i++){
+		for(int j = 0;j<board.length;j++){
+			System.out.print(board[i][j]);		
+}
+		System.out.println(); //Prints the board.
+}
+}
+}
+//Creates an Array List of objects for Community Chest deck.
+ArrayList<ChestCard> cards;
+
+public void ChestDeck() {
+	
+	cards = new ArrayList<ChestCard>();
+	
+	cards.add(new ChestCard(0, "Advance to GO. (Collect $200.)"));
+	cards.add(new ChestCard(1, "Bank error in your favor. (Collect $200.)"));
+	cards.add(new ChestCard(2, "Doctor's fees. (Pay $50.)"));
+	cards.add(new ChestCard(3, "From sale of stock you get $50. (Collect $50.)"));
+	cards.add(new ChestCard(4, "Get Out of Jail Free Card. (With this you can use it to get out of jail without having to pay for bail.)"));
+	cards.add(new ChestCard(5, "Go to Jail. (Move to jail space)"));
+	cards.add(new ChestCard(6, "Grand Opera Night. (Collect $50 from every player for opening night seats.)"));
+	cards.add(new ChestCard(7, "Holiday Fund matures. (Collect $100.)"));
+	cards.add(new ChestCard(8, "Income tax refund. (Colect $20.)"));
+	cards.add(new ChestCard(9, "It is your birthday. (Collect $10 from each player.)"));
+	cards.add(new ChestCard(10, "Life insurance matures. (Collect $100.)"));
+	cards.add(new ChestCard(11, "Pay hospital fees of $100. (Give $100 to the bank.)"));
+	cards.add(new ChestCard(12, "Pay school fees of $150. (Give $150 to the bank.)"));
+	cards.add(new ChestCard(13, "Recieve $25 consultancy fee. (Collect $25.)"));
+	cards.add(new ChestCard(14, "You are assessed for street repairs. (Pay $40 per house and $115 per hotel.)"));
+	cards.add(new ChestCard(15, "You have won second prize in a beauty contest. (Collect $10.)"));
+	cards.add(new ChestCard(16, "You inherit $100. (Collect $100."));
+	shuffle(cards); //Calls the shuffle method to shuffle the Community Chest deck.
+}
+
+public static void shuffle(List<ChestCard> cards) {
+	//Shuffles the Community Chest deck.
+	Collections.shuffle(cards);
+}
+
+public void getChest() {
+	int i = 0;
+	ChestCard card = (ChestCard) cards.get(i);
+	System.out.println("GOT CommunityChest: " + card.label); //Prints out the card at the top of the Community Chest deck.
+	cards.remove(card); //removes said card from the top of the Community Chest deck.
+	cards.add(card); //adds the said card to the bottom of the Community Chest deck.
+	i++;
+}
+
+class ChestCard {
+
+	public int type;
+	public String label;
+
+	public ChestCard(int cardtype, String cardname) {
+		//Used to clarify what the card deck is.
+		type = cardtype;
+		label = cardname;
+	}
+}
+}
+//Creates an arraylist of objects for Chance Deck.
+ArrayList<ChanceCard> cards;
+
+public void ChanceDeck() {
+	cards = new ArrayList<ChanceCard>();
+
+	cards.add(new ChanceCard(0, "Get Out of Jail Free Card. (With this you can use it to get out of jail without having to pay for bail.)"));			
+	cards.add(new ChanceCard(1, "Pay Poor Tax of $15. (Give $15)"));
+	cards.add(new ChanceCard(2, "Elected Chairman of the Board. (Pay each player $50.)"));
+	cards.add(new ChanceCard(3, "Bank Pays you dividend of $50. (Collect $50.)"));
+	cards.add(new ChanceCard(4, "Your building loan matures. (Collect $150.)"));
+	cards.add(new ChanceCard(5, "Make General Repairs on all Property. (For each house pay $25, For each hotel pay $100.)"));
+	cards.add(new ChanceCard(6, "GO TO JAIL. (Move player to the jail space.)"));
+	cards.add(new ChanceCard(7, "Advance to Go. (Move player to GO space and collect $200.)"));
+	cards.add(new ChanceCard(8, "Advance to St. Charles Place.(Move player to St. Charles Place.)"));
+	cards.add(new ChanceCard(9, "Advance to Boardwalk. (Move player to Boardwalk space.)"));
+	cards.add(new ChanceCard(10, "Advance to Nearest Utility. (Move Player to the nearest utility space. If utility is owned by another player than throw dice and pay ten times the amount thrown.)"));
+	cards.add(new ChanceCard(11, "Advance to Illinois Avenue. (Move player to Illinois Avenue space.)"));
+	cards.add(new ChanceCard(12, "Advance to Reading Railroad. (Move playe to Reading Railroad space.)"));
+	cards.add(new ChanceCard(13, "Go back 3 spaces. (Move player back 3 spaces.)"));
+	cards.add(new ChanceCard(14, "Advance to nearest Railroad. (Move player to the neaest Railroad space. If Railroad is owned by another player pay twice the rental.)"));
+	cards.add(new ChanceCard(15, "Take a trip to nearest Railroad"));
+	cards.add(new ChanceCard(16, "You have won a crossword competition. (Collect $100.)"));
+
+	shuffle(cards);//Calls the shuffle method to shuffle the Chance deck.
+}
+
+public void shuffle(List<ChanceCard> cards) {
+	//Shuffles the Chance deck.
+	Collections.shuffle(cards);
+}
+
+
+public void getCard(){
+	int i = 0;
+	ChanceCard card = (ChanceCard) cards.get(i);
+	System.out.println("GOT Chance: " + card.label); //Prints out the card at the top of the Chance deck.
+	cards.remove(card); //removes said card from the top of the Chance deck.
+	cards.add(card);//adds the said card to the bottom of the Chance deck.
+	i++;
+	
+}
+
+class ChanceCard {
+
+	public int type;
+	public String label;
+
+	public ChanceCard(int cardtype, String cardname) {
+		//Used to clarify what the card deck is.
+		type = cardtype;
+		label = cardname;
+	}
+}
+}
